@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>الرئيسية</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="../assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="../assets/vendor/libs/typeahead-js/typeahead.css" />
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/pages/page-help-center.css" />
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="../assets/vendor/js/template-customizer.js"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+               <img width="40" src="../assets/img/branding/logo.png" />
+              </span>
+              <span class="app-brand-text demo menu-text fw-bold">أوقاف صدقي</span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+              <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner border">
+
+            <!--  Pages -->
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon fa-solid fa-city fa-xl"></i>
+                <div data-i18n="المراكز">المراكز</div>
+              </a>
+
+                  <ul class="menu-sub">
+                    <li class="menu-item active">
+                      <a href="center.html" class="menu-link">
+                        <i class="menu-ico fa-solid fa-building"></i>
+                        <div data-i18n="نموذج">نموذج</div>
+                      </a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="#" class="menu-link">
+                        <div data-i18n="محل">محل</div>
+                      </a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="#" class="menu-link">
+                        <div data-i18n="شقة">شقة</div>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                            <!--  Pages -->
+            <li class="menu-item  ">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon fa-solid fa-city fa-xl"></i>
+                <div data-i18n="المراكز">المراكز</div>
+              </a>
+
+                  <ul class="menu-sub">
+                    <li class="menu-item active">
+                      <a href="#" class="menu-link">
+                        <i class="menu-ico fa-solid fa-building"></i>
+                        <div data-i18n="شقة">شقة</div>
+                      </a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="#" class="menu-link">
+                        <div data-i18n="محل">محل</div>
+                      </a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="#" class="menu-link">
+                        <div data-i18n="شقة">شقة</div>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+         
+
+
+
+
+
+
+              </ul>
+            </li>
+          </ul>
+          <div class="col-md-12 text-center">
+
+              <DIV class="col-md-12 border">
+                  <div class="py-2" id="dayname"></div>
+              </DIV>
+              <div class="col-md-12 border">
+                <h6 id="date" class="date d-none"></h6>
+                  <div class="py-2" id="monthname"></div>
+              </div>
+              <div class="col-md-12" style="background-color: #489164;">
+                 <h6 id="time" class="py-2" style="color:  #ffffff;;" ></h6>
+              </div>
+          </div>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="ti ti-menu-2 ti-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item navbar-search-wrapper mb-0">
+                  <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                    <i class="ti ti-search ti-md me-2"></i>
+                    <span class="d-none d-md-inline-block text-muted">بحث (Ctrl+/)</span>
+                  </a>
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+                <!-- Quick links  -->
+                <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
+                  <a
+                    class="nav-link dropdown-toggle hide-arrow"
+                    href="javascript:void(0);"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    <i class="ti ti-layout-grid-add ti-md"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end py-0">
+                    <div class="dropdown-menu-header border-bottom">
+                      <div class="dropdown-header d-flex align-items-center py-3">
+                        <h5 class="text-body mb-0 me-auto">وصول سريع</h5>
+                        <a
+                          href="javascript:void(0)"
+                          class="dropdown-shortcuts-add text-body"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Add shortcuts"
+                          ><i class="ti ti-sm ti-apps"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="dropdown-shortcuts-list scrollable-container">
+                      <div class="row row-bordered overflow-visible g-0">
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-calendar fs-4"></i>
+                          </span>
+                          <a href="#" class="stretched-link">التقويم</a>
+                          <small class="text-muted mb-0">مواعيد المباني</small>
+                        </div>
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-file-invoice fs-4"></i>
+                          </span>
+                          <a href="#" class="stretched-link"> الفواتير</a>
+                          <small class="text-muted mb-0">ادارة الفواتير </small>
+                        </div>
+                      </div>
+                      <div class="row row-bordered overflow-visible g-0">
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-users fs-4"></i>
+                          </span>
+                          <a href="#" class="stretched-link">المستخدمين </a>
+                          <small class="text-muted mb-0">ادارة المستخدمين </small>
+                        </div>
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-lock fs-4"></i>
+                          </span>
+                          <a href="#" class="stretched-link">الصلاحيات </a>
+                          <small class="text-muted mb-0">ادارة الصلاحيات</small>
+                        </div>
+                      </div>
+                      <div class="row row-bordered overflow-visible g-0">
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-chart-bar fs-4"></i>
+                          </span>
+                          <a href="#" class="stretched-link">احصائيات</a>
+                          <small class="text-muted mb-0">احصائيات وتقارير المراكز </small>
+                        </div>
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-settings fs-4"></i>
+                          </span>
+                          <a href="#" class="stretched-link">اعدادات</a>
+                          <small class="text-muted mb-0">اعدادات الحساب </small>
+                        </div>
+                      </div>
+                      <div class="row row-bordered overflow-visible g-0">
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-help fs-4"></i>
+                          </span>
+                          <a href="#" class="stretched-link">الدعم الفني </a>
+                          <small class="text-muted mb-0">الاسئلة والاستفسارات</small>
+                        </div>
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-square fs-4"></i>
+                          </span>
+                          <a href="#" class="stretched-link">الشقق</a>
+                          <small class="text-muted mb-0">الشقق وتقاريرها </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!-- Quick links -->
+
+                <!-- Notification -->
+                <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
+                  <a
+                    class="nav-link dropdown-toggle hide-arrow"
+                    href="javascript:void(0);"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    <i class="ti ti-bell ti-md"></i>
+                    <span class="badge bg-danger rounded-pill badge-notifications">5</span>
+                  </a>
+                  <ul class=" dropdown-menu dropdown-menu-end py-0">
+                    <li class="dropdown-menu-header border-bottom">
+                      <div class="dropdown-header d-flex align-items-center py-3">
+                        <h5 class="text-body mb-0 me-auto">تنبيهات</h5>
+                        <a
+                          href="javascript:void(0)"
+                          class="dropdown-notifications-all text-body"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="اجعل الجميع كمقروء"
+                          ><i class="ti ti-mail-opened fs-4"></i
+                        ></a>
+                      </div>
+                    </li>
+                    <li class="dropdown-notifications-list scrollable-container">
+                      <ul class="list-group list-group-flush">
+                       
+                        <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                              <div class="avatar">
+                                <span class="avatar-initial rounded-circle bg-label-success"
+                                  ><i class="ti ti-shopping-cart"></i
+                                ></span>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1">مصروفات على مبنى 5 </h6>
+                              <p class="mb-0">سداد فاتورة على مصعد المبنى والانارة</p>
+                              <small class="text-muted">منذ 1 يوم</small>
+                            </div>
+                            <div class="flex-shrink-0 dropdown-notifications-actions">
+                              <a href="javascript:void(0)" class="dropdown-notifications-read"
+                                ><span class="badge badge-dot"></span
+                              ></a>
+                              <a href="javascript:void(0)" class="dropdown-notifications-archive"
+                                ><span class="ti ti-x"></span
+                              ></a>
+                            </div>
+                          </div>
+                        </li>
+                       
+                        <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                              <div class="avatar">
+                                <span class="avatar-initial rounded-circle bg-label-warning"
+                                  ><i class="ti ti-alert-triangle"></i
+                                ></span>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1">تنبيه مبنى 9</h6>
+                              <p class="mb-0">كسر في مصباح الطابق الثالث</p>
+                              <small class="text-muted">منذ 5 أايام </small>
+                            </div>
+                            <div class="flex-shrink-0 dropdown-notifications-actions">
+                              <a href="javascript:void(0)" class="dropdown-notifications-read"
+                                ><span class="badge badge-dot"></span
+                              ></a>
+                              <a href="javascript:void(0)" class="dropdown-notifications-archive"
+                                ><span class="ti ti-x"></span
+                              ></a>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown-menu-footer border-top">
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
+                        إظهار كافة التنبيهات
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ Notification -->
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block">فتحي الخشن </span>
+                            <small class="text-muted">مدير نظام</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="ti ti-user-check me-2 ti-sm"></i>
+                        <span class="align-middle">المف الشخصي</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="ti ti-settings me-2 ti-sm"></i>
+                        <span class="align-middle">اعدادات الحساب</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#" target="_blank">
+                        <i class="ti ti-logout me-2 ti-sm"></i>
+                        <span class="align-middle">تسجيل الخروج </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+
+            <!-- Search Small Screens -->
+            <div class="navbar-search-wrapper search-input-wrapper d-none">
+              <input
+                type="text"
+                class="form-control search-input container-xxl border-0"
+                placeholder="بحث..."
+                aria-label="بحث..." />
+              <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <!-- Help Center Header -->
+              <div
+                class="help-center-header rounded d-flex flex-column justify-content-center align-items-center bg-help-center">
+                <h3 class="text-center">بحث سريع عن المراكز أو المباني</h3>
+                <div class="input-wrapper mb-3 input-group input-group-lg input-group-merge">
+                  <span class="input-group-text" id="basic-addon1"><i class="ti ti-search"></i></span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="إبحث باسم المبنى او رقم المبني أو اسم المركز"
+                    aria-label="بحث"
+                    aria-describedby="basic-addon1" />
+                </div>
+              </div>
+              <!-- /Help Center Header -->
+
+              <!-- Popular Articles -->
+              <div class="help-center-popular-articles bg-help-center py-5">
+                <div class="container-xl">
+                  <h3 class="text-center my-4">المراكز الرئيسية </h3>
+
+                  
+                  <div class="row">
+                    <div class="col-lg-10 mx-auto mb-4">
+                      <div class="row">
+                        <div class="col-md-4 mb-md-0 mb-4">
+                          <div class="card border shadow-none">
+                             <a class="home-page-linke" href="#" >
+                            <div class="card-body text-center">
+                             <svg fill="#b0b242" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="58px" height="58px" viewBox="0 0 54.82 54.821"
+	 xml:space="preserve">
+<g>
+	<polygon points="6.828,12.875 3.805,53.65 0,53.65 2.83,19.215 	"/>
+	<polygon points="50.041,19.51 52.285,53.65 54.82,53.65 52.431,23.998 	"/>
+	<path d="M18.435,8.974L11.022,53.65h15.9V1.17L18.435,8.974z M25.362,45.26l-11.973,4.486l0.683-4.682l11.291-4.584V45.26z
+		 M25.362,38.238l-11.12,4.583l0.682-4.682l10.438-4.682V38.238z M25.362,31.216l-10.096,4.388l0.683-4.683l9.413-4.485V31.216z
+		 M25.362,24.289l-8.876,4.585l0.682-4.683l8.193-4.683L25.362,24.289L25.362,24.289z M25.362,17.167l-7.853,4.684l0.683-4.682
+		l7.17-4.781V17.167z M25.362,10.242l-6.829,4.583l0.975-4.583l5.854-4.78V10.242z"/>
+	<path d="M34.628,7.022L27.799,1.17V53.65h15.412L34.628,7.022z M28.776,5.462l5.071,3.609l0.928,4.195l-5.999-3.513V5.462z
+		 M28.776,12.388l5.999,2.902l0.73,4.023l-6.729-2.633V12.388z M28.776,19.313l6.729,2.539l0.924,4.388l-7.653-2.634V19.313z
+		 M28.776,26.238l7.653,2.636l0.98,5.143l-8.633-2.998L28.776,26.238L28.776,26.238z M28.776,33.164l8.876,3.172l0.959,4.793
+		l-9.834-3.307L28.776,33.164L28.776,33.164z M28.776,40.09l9.835,3.561l1.104,4.472l-10.938-3.277V40.09z"/>
+	<path d="M7.608,13.266L4.487,53.65h5.852l0.808-4.976l-5.4-1.415l0.195-2.293l5.533,1.693l0.257-1.585l-5.687-1.651l0.195-2.293
+		l5.818,1.953l0.259-1.607l-6.015-1.762l0.195-2.293l6.142,2.084l0.265-1.626l-6.271-1.933l0.195-2.294l6.395,2.275l0.269-1.648
+		l-6.663-2.111l0.196-2.293l6.63,2.415v0.98l1.27-7.81v-9.072L7.608,13.266z M13.8,30.58l-6.533-2.342l0.195-2.294l6.338,2.587
+		V30.58z M13.948,26.825l-6.354-2.28l0.196-2.293l6.158,2.525V26.825z M14.095,23.069L7.95,20.875l0.195-2.293l5.951,2.439
+		L14.095,23.069L14.095,23.069z M14.242,19.313L8.096,17.12l0.195-2.294l5.952,2.439V19.313z"/>
+	<path d="M49.553,19.02l-7.316,2.926l-1.268,15.802l0.68,3.36l8.15-2.014l0.145,2.658l-7.825,1.676l0.332,1.638l7.59-1.512
+		l0.236,2.864l-7.345,1.03l1.256,6.2h7.219L49.553,19.02z M42.888,23.536l5.997-2.203l0.105,2.516l-6.266,1.891L42.888,23.536z
+		 M42.562,27.052L49.19,25l0.13,2.258l-6.921,1.996L42.562,27.052z M42.236,30.567l7.086-2.203l0.108,2.387l-7.357,2.019
+		L42.236,30.567z M41.911,34.083l7.627-2.203l0.088,2.429l-7.878,1.978L41.911,34.083z M41.423,39.801l0.161-2.201l8.042-2.203
+		l0.173,2.319L41.423,39.801z"/>
+</g>
+</svg>
+
+                              <h5 class="my-2">مركز العزيزية</h5>
+                              <p>العزيزية الشمالية خلف اسواق بن واسواق العصيم الثاني والاول والاخير...</p>
+                             
+                            </div>
+                               </a >
+                          </div>
+                        </div>
+
+                          <div class="col-md-4 mb-md-0 mb-4">
+                          <div class="card border shadow-none">
+                             <a class="home-page-linke" href="#" >
+                            <div class="card-body text-center">
+                            <svg fill="#b0b242" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="58px" height="58px" viewBox="0 0 60.272 60.272"
+	 xml:space="preserve">
+<g>
+	<polygon points="31.577,1.863 44.039,10.002 44.039,58.579 31.577,58.579 	"/>
+	<path d="M45.015,36.875v21.449h15.258V41.749L45.015,36.875z M51.457,53.661l-4.662-1.357V48.28l4.662,1.692V53.661z
+		 M51.457,46.624l-4.662-1.358v-4.022l4.662,1.694V46.624z M57.306,55.354l-4.664-1.355v-4.026l4.664,1.695V55.354z M57.306,48.318
+		l-4.663-1.356v-4.024l4.665,1.692v3.688H57.306z"/>
+	<path d="M14.75,11.527v32.208l-2.203,1.439V34.417l-1.398,0.578v-10.73L0.974,28.757V39.21L0,39.614v18.965h30.154V1.694
+		L14.75,11.527z M1.907,30.804l3.434-1.589v4.132l-3.434,1.526V30.804z M2.162,37.501l3.433-1.591v4.135l-3.433,1.524V37.501z
+		 M5.699,52.345l-3.433,1.528v-4.071l3.433-1.589V52.345z M5.699,46.049l-3.433,1.529v-4.071l3.433-1.588V46.049z M6.188,28.812
+		l3.434-1.589v4.133l-3.434,1.525V28.812z M6.443,35.508l3.433-1.589v4.133l-3.433,1.527V35.508z M10.278,50.376l-3.434,1.527
+		v-4.069l3.434-1.591V50.376z M10.278,44.081l-3.434,1.525v-4.067l3.434-1.59V44.081z M21.277,44.797l-4.749,2.973v-4.408
+		l4.749-3.072V44.797z M21.277,37.349l-4.749,2.971V35.91l4.749-3.072V37.349z M21.277,29.899l-4.749,2.974v-4.411l4.749-3.074
+		V29.899z M21.277,22.45l-4.749,2.97v-4.408l4.749-3.074V22.45z M21.277,14.999l-4.749,2.972v-4.409l4.749-3.073V14.999z
+		 M28.313,40.395l-5.51,3.448V39.3l5.51-3.566V40.395z M28.313,32.945l-5.51,3.449v-4.544l5.51-3.568V32.945z M28.313,25.495
+		l-5.51,3.449v-4.542l5.51-3.569V25.495z M28.313,18.045l-5.51,3.449v-4.543l5.51-3.568V18.045z M28.313,10.594l-5.51,3.449V9.5
+		l5.51-3.568V10.594z"/>
+</g>
+</svg>
+                              <h5 class="my-2">مركز العزيزية</h5>
+                              <p>العزيزية الشمالية خلف اسواق بن واسواق العصيم الثاني والاول والاخير...</p>
+                             
+                            </div>
+                               </a >
+                          </div>
+                        </div>
+
+                          <div class="col-md-4 mb-md-0 mb-4">
+                          <div class="card border shadow-none">
+                             <a class="home-page-linke" href="#" >
+                            <div class="card-body text-center">
+                           <svg fill="#b0b242" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="58px" height="58px" viewBox="0 0 58.914 58.914"
+	 xml:space="preserve">
+<g>
+	<path d="M28.96,8.394C11.405,8.394,0,20.691,0,20.691v24.474c0,0,8.237,3.702,20.356,4.949v-2.247h6.819v2.644
+		c0.305,0.003,0.609,0.009,0.917,0.009c0.515,0,1.027-0.002,1.537-0.011v-2.642h6.819v2.292c12.844-1.082,22.465-4.245,22.465-4.245
+		V20.691C58.915,20.691,48.204,8.394,28.96,8.394z M1.612,21.287c0.368-0.293,0.738-0.577,1.106-0.852l0.036,3.482
+		c-0.393,0.257-0.775,0.521-1.143,0.79L1.612,21.287L1.612,21.287z M1.612,25.079c0.368-0.275,0.75-0.544,1.147-0.808l0.037,3.778
+		c-0.399,0.203-0.795,0.41-1.184,0.621V25.079z M1.612,29.008c0.39-0.215,0.787-0.424,1.189-0.63l0.044,4.393
+		c-0.42,0.196-0.833,0.396-1.233,0.606V29.008z M1.612,33.714c0.402-0.213,0.814-0.418,1.238-0.616l0.042,4.18
+		c-0.425,0.104-0.852,0.213-1.28,0.327V33.714z M1.612,37.912c0.431-0.113,0.857-0.222,1.282-0.327l0.037,3.524
+		c-0.436,0.014-0.877,0.029-1.319,0.049V37.912z M1.612,43.379v-1.925c0.443-0.02,0.884-0.035,1.322-0.049l0.025,2.478
+		C2.098,43.575,1.612,43.379,1.612,43.379z M3.309,19.998c0.568-0.413,1.135-0.806,1.7-1.183l0.039,3.66
+		c-0.581,0.312-1.15,0.635-1.703,0.969L3.309,19.998z M3.349,23.79c0.552-0.337,1.121-0.666,1.702-0.98l0.042,4.107
+		c-0.571,0.251-1.141,0.514-1.704,0.784L3.349,23.79z M3.392,28.031c0.563-0.272,1.132-0.536,1.705-0.79l0.045,4.535
+		c-0.576,0.22-1.145,0.449-1.705,0.69L3.392,28.031z M3.44,32.789C4,32.544,4.57,32.312,5.146,32.09l0.049,4.687
+		c-0.562,0.122-1.132,0.251-1.708,0.387L3.44,32.789z M3.488,37.469c0.577-0.137,1.147-0.267,1.709-0.387l0.042,4.07
+		c-0.563,0.012-1.134,0.022-1.712,0.039L3.488,37.469z M3.558,44.099l-0.028-2.61c0.578-0.015,1.148-0.026,1.712-0.038l0.032,3.227
+		C4.627,44.465,4.049,44.27,3.558,44.099z M5.601,18.426c0.624-0.403,1.242-0.786,1.848-1.147l0.041,3.928
+		c-0.62,0.288-1.239,0.588-1.852,0.903L5.601,18.426z M5.643,22.442c0.611-0.318,1.23-0.619,1.85-0.907l0.044,4.323
+		c-0.615,0.243-1.232,0.495-1.854,0.759L5.643,22.442z M5.688,26.94c0.619-0.267,1.239-0.52,1.851-0.764l0.049,4.704
+		c-0.615,0.2-1.235,0.412-1.853,0.638L5.688,26.94z M5.738,31.831c0.617-0.226,1.237-0.438,1.853-0.641l0.053,5.072
+		c-0.606,0.112-1.226,0.238-1.857,0.37L5.738,31.831z M5.791,36.934c0.631-0.133,1.251-0.255,1.856-0.369l0.047,4.562
+		c-0.606,0.004-1.226,0.008-1.86,0.018L5.791,36.934z M5.872,44.869L5.836,41.44c0.632-0.009,1.253-0.013,1.859-0.017l0.041,4.011
+		C7.074,45.241,6.449,45.051,5.872,44.869z M8.041,16.932c0.374-0.216,0.742-0.421,1.105-0.621l0.042,4.15
+		c-0.366,0.153-0.735,0.311-1.106,0.473L8.041,16.932z M8.085,21.257c0.372-0.162,0.74-0.321,1.106-0.475l0.045,4.463
+		c-0.365,0.132-0.733,0.27-1.106,0.411L8.085,21.257z M8.133,25.972c0.373-0.142,0.743-0.279,1.108-0.413l0.049,4.864
+		c-0.366,0.104-0.734,0.213-1.107,0.326L8.133,25.972z M8.187,31.059c0.372-0.113,0.742-0.224,1.107-0.328l0.055,5.352
+		c-0.363,0.06-0.732,0.123-1.109,0.192L8.187,31.059z M8.241,36.574c0.378-0.065,0.748-0.13,1.11-0.191l0.051,4.95
+		c-0.364,0-0.734-0.002-1.11-0.002L8.241,36.574z M8.335,45.607l-0.042-3.978c0.378,0,0.749,0,1.111,0.002l0.043,4.283
+		C9.067,45.811,8.697,45.708,8.335,45.607z M9.737,15.991c1.061-0.568,2.06-1.062,2.969-1.486l0.047,4.575
+		c-0.933,0.344-1.938,0.733-2.972,1.165L9.737,15.991z M9.784,20.564c1.034-0.432,2.038-0.823,2.972-1.167l0.047,4.613
+		c-0.926,0.3-1.927,0.642-2.973,1.02L9.784,20.564z M9.834,25.345c1.045-0.38,2.046-0.721,2.973-1.024l0.052,5.1
+		c-0.928,0.226-1.934,0.49-2.975,0.79L9.834,25.345z M9.886,30.517c1.042-0.301,2.046-0.565,2.976-0.793l0.059,5.69
+		c-0.917,0.128-1.917,0.28-2.979,0.457L9.886,30.517z M9.945,36.17c1.062-0.179,2.061-0.329,2.979-0.456l0.056,5.446
+		c-0.911-0.018-1.914-0.028-2.985-0.033L9.945,36.17z M10.046,46.071l-0.048-4.647c1.072,0.006,2.073,0.018,2.985,0.033l0.054,5.33
+		C11.997,46.56,10.995,46.317,10.046,46.071z M17.605,47.619c-1.359-0.196-2.691-0.438-3.971-0.706l-0.057-5.627
+		c1.723,0.03,3.118,0.075,4.028,0.108V47.619z M17.605,41.098c-0.915-0.034-2.311-0.079-4.032-0.108l-0.057-5.449
+		c1.667-0.231,3.065-0.385,4.087-0.484v6.042H17.605z M17.605,34.755c-1.021,0.099-2.42,0.253-4.091,0.483l-0.058-5.692
+		c1.726-0.422,3.189-0.721,4.149-0.903V34.755z M17.605,28.339c-0.95,0.181-2.417,0.479-4.151,0.901l-0.053-5.099
+		c1.756-0.571,3.235-1,4.205-1.267L17.605,28.339L17.605,28.339z M17.605,22.564c-0.955,0.264-2.438,0.692-4.208,1.266l-0.047-4.613
+		c1.758-0.649,3.268-1.133,4.254-1.435V22.564z M17.605,17.472c-0.971,0.293-2.484,0.778-4.257,1.428L13.3,14.234
+		c2.589-1.171,4.306-1.725,4.306-1.725V17.472z M22.315,43.9V16.724c0-3.286,2.665-5.95,5.951-5.95h0.595
+		c3.285,0,5.951,2.664,5.951,5.95V43.9H22.315z M44.059,46.915c-1.279,0.267-2.612,0.509-3.971,0.704v-6.224
+		c0.911-0.034,2.305-0.077,4.028-0.107L44.059,46.915z M44.121,40.989c-1.722,0.03-3.119,0.073-4.032,0.107v-6.042
+		c1.022,0.1,2.42,0.253,4.087,0.483L44.121,40.989z M44.179,35.239c-1.671-0.23-3.07-0.385-4.091-0.483v-6.112
+		c0.96,0.182,2.422,0.48,4.148,0.903L44.179,35.239z M44.24,29.24c-1.734-0.422-3.201-0.72-4.151-0.901v-5.465
+		c0.968,0.267,2.448,0.696,4.205,1.267L44.24,29.24z M44.295,23.83c-1.771-0.574-3.253-1.002-4.207-1.266v-4.781
+		c0.987,0.301,2.496,0.786,4.254,1.435L44.295,23.83z M44.346,18.9c-1.776-0.65-3.287-1.135-4.258-1.428v-4.964
+		c0,0,1.717,0.555,4.305,1.726L44.346,18.9z M47.646,46.071c-0.948,0.246-1.951,0.489-2.99,0.716l0.054-5.328
+		c0.911-0.018,1.912-0.028,2.983-0.034L47.646,46.071z M47.698,41.126c-1.071,0.005-2.073,0.017-2.984,0.033l0.056-5.446
+		c0.918,0.127,1.917,0.278,2.979,0.456L47.698,41.126z M47.751,35.87c-1.062-0.177-2.062-0.328-2.98-0.456l0.06-5.691
+		c0.93,0.228,1.935,0.493,2.977,0.792L47.751,35.87z M47.809,30.209c-1.042-0.3-2.047-0.564-2.975-0.79l0.052-5.1
+		c0.927,0.303,1.928,0.644,2.974,1.024L47.809,30.209z M47.862,25.03c-1.046-0.378-2.047-0.72-2.973-1.02l0.047-4.613
+		c0.935,0.344,1.939,0.735,2.973,1.167L47.862,25.03z M47.911,20.245c-1.033-0.431-2.038-0.821-2.972-1.165l0.048-4.575
+		c0.909,0.424,1.909,0.918,2.969,1.486L47.911,20.245z M49.454,45.627c-0.362,0.104-0.733,0.205-1.113,0.308l0.042-4.282
+		c0.364-0.002,0.734-0.002,1.112-0.002L49.454,45.627z M49.498,41.353c-0.378,0-0.749,0-1.11,0.004l0.05-4.953
+		c0.363,0.062,0.731,0.124,1.109,0.192L49.498,41.353z M49.55,36.295c-0.378-0.067-0.747-0.133-1.11-0.193l0.054-5.351
+		c0.367,0.105,0.735,0.214,1.107,0.327L49.55,36.295z M49.605,30.773c-0.372-0.114-0.742-0.225-1.106-0.328l0.049-4.863
+		c0.364,0.132,0.736,0.271,1.109,0.413L49.605,30.773z M49.659,25.677c-0.373-0.14-0.743-0.278-1.107-0.409l0.045-4.461
+		c0.368,0.152,0.736,0.31,1.108,0.475L49.659,25.677z M49.706,20.958c-0.371-0.165-0.74-0.322-1.107-0.475l0.043-4.149
+		c0.364,0.198,0.732,0.404,1.105,0.62L49.706,20.958z M51.916,44.889c-0.576,0.184-1.202,0.374-1.865,0.567l0.041-4.011
+		c0.606,0.003,1.227,0.007,1.86,0.017L51.916,44.889z M51.955,41.166c-0.634-0.01-1.254-0.017-1.859-0.019l0.046-4.564
+		c0.605,0.117,1.227,0.241,1.856,0.37L51.955,41.166z M52.001,36.652c-0.632-0.131-1.252-0.254-1.856-0.369l0.053-5.07
+		c0.616,0.201,1.235,0.412,1.853,0.642L52.001,36.652z M52.053,31.538c-0.616-0.227-1.237-0.438-1.854-0.636l0.049-4.704
+		c0.612,0.243,1.232,0.499,1.852,0.763L52.053,31.538z M52.104,26.638c-0.622-0.264-1.239-0.517-1.854-0.759l0.045-4.323
+		c0.619,0.29,1.239,0.591,1.851,0.908L52.104,26.638z M52.149,22.134c-0.611-0.315-1.231-0.616-1.85-0.902l0.041-3.93
+		c0.604,0.361,1.224,0.745,1.847,1.148L52.149,22.134z M54.232,44.12c-0.493,0.173-1.07,0.368-1.719,0.579l0.032-3.226
+		c0.563,0.011,1.135,0.021,1.713,0.038L54.232,44.12z M54.26,41.213c-0.575-0.016-1.147-0.027-1.711-0.038l0.041-4.071
+		c0.563,0.121,1.131,0.251,1.709,0.387L54.26,41.213z M54.303,37.184c-0.578-0.135-1.147-0.263-1.709-0.385l0.047-4.688
+		c0.576,0.222,1.147,0.456,1.707,0.698L54.303,37.184z M54.35,32.488c-0.56-0.241-1.13-0.473-1.705-0.691l0.046-4.534
+		c0.572,0.254,1.142,0.518,1.704,0.79L54.35,32.488z M54.4,27.723c-0.563-0.27-1.133-0.532-1.705-0.785l0.043-4.106
+		c0.581,0.314,1.15,0.642,1.701,0.98L54.4,27.723z M54.443,23.464c-0.553-0.335-1.122-0.656-1.703-0.967l0.038-3.662
+		c0.565,0.377,1.133,0.771,1.701,1.184L54.443,23.464z M56.176,43.402c0,0-0.485,0.196-1.349,0.505l0.027-2.479
+		c0.438,0.013,0.88,0.028,1.322,0.048L56.176,43.402L56.176,43.402z M56.176,41.178c-0.441-0.018-0.881-0.033-1.319-0.048
+		l0.036-3.525c0.425,0.106,0.853,0.215,1.283,0.33V41.178z M56.176,37.627c-0.43-0.113-0.855-0.224-1.281-0.326l0.043-4.183
+		c0.423,0.2,0.835,0.405,1.237,0.617L56.176,37.627L56.176,37.627z M56.176,33.399c-0.401-0.21-0.813-0.41-1.234-0.605l0.045-4.393
+		c0.402,0.204,0.799,0.413,1.188,0.629L56.176,33.399L56.176,33.399z M56.176,28.69c-0.389-0.211-0.784-0.417-1.186-0.621
+		l0.039-3.777c0.396,0.262,0.779,0.533,1.146,0.809V28.69z M56.176,24.73c-0.367-0.271-0.749-0.534-1.143-0.791l0.034-3.484
+		c0.369,0.278,0.738,0.56,1.107,0.853L56.176,24.73L56.176,24.73z"/>
+</g>
+</svg>
+                              <h5 class="my-2">مركز العزيزية</h5>
+                              <p>العزيزية الشمالية خلف اسواق بن واسواق العصيم الثاني والاول والاخير...</p>
+                             
+                            </div>
+                               </a >
+                          </div>
+                        </div>
+
+                       
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /Popular Articles -->
+
+            
+
+            
+
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl">
+                <div
+                  class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                  <div>
+                    ©
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>
+                    صدقي 
+                  </div>
+                  <div>
+                    <a href="#" class="footer-link me-4" target="_blank"
+                      >الدعم</a
+                    >
+                    
+
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="footer-link me-4"
+                      >الدعم</a
+                    >
+
+                    <a href="#" target="_blank" class="footer-link d-none d-sm-inline-block"
+                      >الدعم</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../assets/vendor/libs/node-waves/node-waves.js"></script>
+
+    <script src="../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+
+    <script src="../assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+  
+    <!-- Time JS -->
+    <script src="../js/time.js"></script>
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+  </body>
+</html>
