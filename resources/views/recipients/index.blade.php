@@ -99,8 +99,9 @@
                             </td>
 
                         </tr>
+                        @endforeach
                 </tbody>
-                @endforeach
+
                 <tfoot>
                     <tr>
                         <th>#</th>

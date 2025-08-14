@@ -8,9 +8,9 @@
             </div>
             <div class="pull-right mb-3">
                 <a class="btn btn-primary me-sm-3 me-1" href="#"><i class="fa fa-plus"></i>&nbsp;
-                    اضافة راتب موظف  </a> 
+                    اضافة راتب موظف  </a>
                     <a class="btn btn-primary me-sm-3 me-1" href="#"><i class="fa fa-plus"></i>&nbsp;
-                    اضافة راتب جميع الموظفين  </a> 
+                    اضافة راتب جميع الموظفين  </a>
                     <a class="btn btn-primary me-sm-3 me-1" href="#"><i class="fa fa-plus"></i>&nbsp;
                     اضافة راتب جميع الموظفين مع الصرف  </a>
             </div>
@@ -70,7 +70,7 @@
 
 
 
-                                {{-- 
+                                {{--
                                 <div class="d-inline-block">
                                     <a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown">
@@ -94,8 +94,8 @@
                             </td>
 
                         </tr>
+                        @endforeach
                 </tbody>
-                @endforeach
                 <tfoot>
                     <th>#</th>
                     <th> الشهر</th>

@@ -83,6 +83,7 @@
 </head>
 
 <body>
+    <input type="hidden" name="rooturl" value="<?=$root?>" id="rooturl">
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -201,8 +202,8 @@
 
     <!-- Page JS -->
     <script src="{{ $root }}/assets/js/form-layouts.js"></script>
-    <script src="{{ $root }}/assets/js/app-email.js"></script>  
-      <script src="{{ $root }}/assets/js/forms-editors.js"></script>  
+    <script src="{{ $root }}/assets/js/app-email.js"></script>
+      <script src="{{ $root }}/assets/js/forms-editors.js"></script>
 
     <!-- Time JS -->
     <script src="{{ $root }}/js/time.js"></script>
@@ -225,11 +226,11 @@
                 }
             };
 
+const rooturl = document.getElementById("rooturl").value ;
 
-         
             new DataTable('.FathyTable', {
-                language: {                 
-                  url: 'http://localhost:8000/assets/vendor/libs/DataTable/ar.json'
+                language: {
+                  url: rooturl+'/assets/vendor/libs/DataTable/ar.json'
                 },
                 layout: {
                     topStart: {

@@ -46,7 +46,7 @@
                             <td>
                                 <a  href="#exampleModal{{ $employee->id }}" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal{{ $employee->id }}">
-                                    <i class="fa fa-eye "  aria-hidden="true"></i> 
+                                    <i class="fa fa-eye "  aria-hidden="true"></i>
                             </a>
                                 <div class="modal fade" id="exampleModal{{ $employee->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,10 +94,10 @@
 
 
                             </td>
-                            
+
                         </tr>
+                        @endforeach
                 </tbody>
-                @endforeach
                 <tfoot>
                     <th>#</th>
                         <th> الاسم</th>
@@ -128,7 +128,7 @@
                 }
             });
         }
-    </script>	
+    </script>
     {!! $data->links('pagination::bootstrap-5') !!}
 
 

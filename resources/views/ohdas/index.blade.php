@@ -53,8 +53,9 @@
                             </td>
 
                         </tr>
+                        @endforeach
                 </tbody>
-                @endforeach
+
                 <tfoot>
 
                     <th> الموظف المسؤول</th>

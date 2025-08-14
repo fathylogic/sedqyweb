@@ -46,7 +46,7 @@
                             <td>
                                 <a  href="#exampleModal{{ $renter->id }}" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal{{ $renter->id }}">
-                                    <i class="fa fa-eye "  aria-hidden="true"></i> 
+                                    <i class="fa fa-eye "  aria-hidden="true"></i>
                             </a>
                                 <div class="modal fade" id="exampleModal{{ $renter->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,10 +95,11 @@
 
 
                             </td>
-                           
+
                         </tr>
+                        @endforeach
                 </tbody>
-                @endforeach
+
                 <tfoot>
                  <tr>
                         <th>#</th>
@@ -130,7 +131,7 @@
                 }
             });
         }
-    </script>		
+    </script>
     {!! $data->links('pagination::bootstrap-5') !!}
 
 

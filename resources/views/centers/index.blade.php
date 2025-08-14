@@ -98,8 +98,9 @@
 
                             </td>
                         </tr>
+                        @endforeach
                 </tbody>
-                @endforeach
+
                 <tfoot>
                     <th>#</th>
                     <th> المنطقة</th>

@@ -1758,7 +1758,7 @@ progress {
 .table > tbody {
   vertical-align: inherit;
 }
-.table > thead {
+.table > thead, .table > tfoot {
   vertical-align: bottom;
   background-color: #489164;
 }
@@ -6633,8 +6633,9 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
   padding-bottom: 0.88rem;
 }
 
-.table:not(.table-dark) thead:not(.table-dark) th {
+.table:not(.table-dark) thead:not(.table-dark) th, .table:not(.table-dark) tfoot:not(.table-dark) th {
   color: #ffffff;
+  cursor: pointer;
 }
 
 .table-border-bottom-0 tr:last-child td,
@@ -6674,7 +6675,9 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
 .nav-align-left .table:not(.table-dark) td {
   border-color: rgba(75, 70, 92, 0.075);
 }
-
+.card-datatable{
+    padding: 20px;
+}
 .btn {
   cursor: pointer;
   display: inline-flex !important;
@@ -17476,7 +17479,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   margin-bottom: 0 !important;
 }
 .menu-vertical .menu-icon {
- 
+
 }
 button.btn.btn-secondary.create-new.btn-primary {
     left: 80000000px !important;
