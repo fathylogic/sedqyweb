@@ -58,8 +58,8 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="<?= asset('storage/' . $renter->img) ?>" width="400px"
-                                                    height="400px">
+                                                <img class="d-block" src="<?= asset('storage/' . $renter->img) ?>" width="100%"
+                                                   >
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -136,5 +136,4 @@
 
 
 
-    <p class="text-renter text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
 @endsection

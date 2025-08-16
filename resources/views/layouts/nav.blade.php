@@ -73,7 +73,7 @@
                         <span class="dropdown-shortcuts-icon rounded-circle mb-2">
                           <i class="ti ti-chart-bar fs-4"></i>
                         </span>
-                         
+
                         <a href="{{ route('payrolls.index') }}" class="stretched-link">ادارة الرواتب</a>
                         <small class="text-muted mb-0">ادارة رواتب الموظفين     </small>
                       </div>
@@ -132,11 +132,11 @@
                                   class="ti ti-shopping-cart"></i></span>
                             </div>
                           </div>
-                        
+
                             <div class="flex-grow-1">
                               <a href="{{route('notifications.show', $n->id)}}" class="dropdown-notifications-read">
                             <h6 class="mb-1">     {{ $n->message }} </h6>
-                           
+
                             <small class="text-muted"> {{$n->created_at}}  </small>
                               </a>
                           </div>
@@ -147,12 +147,12 @@
                             <a href="javascript:void(0)" class="dropdown-notifications-archive"><span
                                 class="ti ti-x"></span></a>
                           </div>
-                         
-                          
+
+
                         </div>
                       </li>
  @endforeach
-                     
+
                     </ul>
                   </li>
                   <li class="dropdown-menu-footer border-top">
@@ -181,7 +181,7 @@
                                 </li>
                             @endif
 
-                          
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -246,3 +246,10 @@
             <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
           </div>
         </nav>
+
+<div class="container-xxl">
+            <h4 class="fw-bold pt-3 pb-1 mb-1"></h4>
+
+
+            <div id="breadcrumb"></div>
+            </div>

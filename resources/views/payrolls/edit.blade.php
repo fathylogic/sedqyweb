@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-         
+
         <div class="pull-right">
             <a class="btn btn-primary me-sm-3 me-1" href="{{ route('employees.index') }}"><i class="fa fa-arrow-left"></i>&nbsp;  عودة &nbsp;</a>
         </div>
@@ -40,7 +40,7 @@
                             <label class="form-label" for="id_no">    رقم الهوية     <i class="fa fa-asterisk " style="color: red" aria-hidden="true"></i></label>
                             <input type="text" id="id_no" name="id_no" value="{{ $employee->id_no }}" required class="form-control"   />
                           </div>
- 
+
                           <div class="col-md-4">
                             <label class="form-label" for="nationality">    الجنسية     <i class="fa fa-asterisk " style="color: red" aria-hidden="true"></i></label>
                             <input type="text" id="nationality" name="nationality" value="{{ $employee->nationality }}" required class="form-control"   />
@@ -87,7 +87,7 @@
                                     <input type="text" id="birthdayh" value="{{ $employee->birthdayh }}" name="birthdayh" class="form-control" />
                                 </div>
 
-                                                     
+
                              <div class="col-md-4">
                           <label for="file" class="form-label">   صورة
 
@@ -95,20 +95,20 @@
 
                           </label>
             <input type="file" name="file" id="file" class="form-control" >
-           
+
                           </div>
-                      
+
                             <div class="col-md-12">
                             <label class="form-label" for="notes">       ملاحظات      </label>
                             <textarea   id="notes" name="notes" class="form-control"  >{{ $employee->notes }}</textarea>
                           </div>
-                          
+
                         </div>
 
-            
+
     <div class="mb-3">
-        
-        
+
+
         <div class="col-md-4 text-employee">
             <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light"> حفظ &nbsp;  <i class="fa-solid fa-floppy-disk"></i> </button>
         </div>
@@ -120,5 +120,5 @@
 </div>
 </form>
 
-<p class="text-employee text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+<p class="text-employee text-primary"><small> </small></p>
 @endsection

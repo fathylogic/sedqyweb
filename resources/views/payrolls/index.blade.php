@@ -133,5 +133,5 @@
 
 
 
-    <p class="text-employee text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+    <p class="text-employee text-primary"><small> </small></p>
 @endsection

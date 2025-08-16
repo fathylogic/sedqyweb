@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-         
+
         <div class="pull-right">
             <a class="btn btn-primary me-sm-3 me-1" href="{{ route('users.index') }}"><i class="fa fa-arrow-left"></i>  عودة &nbsp;</a>
         </div>
@@ -39,10 +39,10 @@
                             <label class="form-label" for="mobile_no">الجوال   </label>
                             <input type="text" id="mobile_no" name="mobile_no" class="form-control" placeholder="رقم الواتس" />
                           </div>
-                          
-                         
 
-                         
+
+
+
                           <div class="col-md-6">
                             <label class="form-label" for="email"> البريد الإلكتروني  </label>
                             <div class="input-group input-group-merge">
@@ -54,7 +54,7 @@
 
                              <div class="col-md-6">
                              <label class="form-label" for="is_admin">  هل المستخدم مدير    </label>
-                            
+
                             <div class="form-check form-switch mb-2">
                               <label class="switch">
                           <input name="is_admin" value="1" type="checkbox" id="is_admin" class="switch-input">
@@ -69,7 +69,7 @@
                           <span class="switch-label"> مدير </span>
                         </label>
                             </div>
-                            
+
 
                           </div>
                           <div class="col-md-6">
@@ -98,10 +98,10 @@
                           </div>
                         </div>
 
-            
+
     <div class="mb-3">
-        
-        
+
+
         <div class="col-md-6 text-center">
             <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light"> حفظ &nbsp;  <i class="fa-solid fa-floppy-disk"></i> </button>
         </div>
@@ -113,5 +113,5 @@
 </div>
 </form>
 
-<p class="text-center text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+
 @endsection

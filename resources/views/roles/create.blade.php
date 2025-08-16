@@ -49,5 +49,5 @@
     </div>
 </form>
 
-<p class="text-center text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+
 @endsection

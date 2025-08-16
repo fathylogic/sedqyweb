@@ -6,7 +6,7 @@
             <div class="pull-left">
                 <h2>إدارة   الايرادات</h2>
             </div>
-           
+
         </div>
     </div>
 
@@ -16,7 +16,7 @@
         </div>
     @endsession
 
-   
+
    <div class="card mb-3">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs" role="tablist">
@@ -32,11 +32,11 @@
                                     <button class="nav-link " data-bs-toggle="tab" data-bs-target="#tab_un_payed"
                                         role="tab" aria-selected="true">
                                           الايرادات (الغير مدفوعة)
-                                        
+
                                     </button>
                                 </li>
 
-                                 
+
 
                             </ul>
                         </div>
@@ -66,7 +66,7 @@
 
                                                         <td>{{ $row->contract->renter->name }}</td>
                                                          <td>{{ $row->employee->name }}</td>
-                                                        <td>{{ $row->amount }} 
+                                                        <td>{{ $row->amount }}
                                                                 - ({{ $row->paymentType->name }})
 
                                                         </td>
@@ -76,9 +76,9 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            
+
                                                                 {{ $row->actual_date }} - {{ $row->actual_dateh }}
-                                                           
+
                                                         </td>
 
                                                         <td>
@@ -102,13 +102,13 @@
                                                                 </ul>
                                                             </div>
 
-                                                            
+
                                                                 <a href="#" onclick="fn_print({{ $row }})"
                                                                     class="btn btn-sm btn-icon item-edit" alt="طباعة"
                                                                     alt="طباعة">
                                                                     <i class="fa-solid fa-print"></i>
                                                                 </a>
-                                                             
+
 
 
 
@@ -132,14 +132,14 @@
                                         </table>
                                     </div>
                                 @else
-                                    لا يوجد    
+                                    لا يوجد
                                 @endif
 
 
                             </div>
                             <div class="tab-pane fade  " id="tab_un_payed" role="tabpanel">
 
-                                 
+
                                 <hr class="my-1" />
                                  @if (!empty($payments_un_payed))
                                     <div class="card-datatable table-responsive pt-0">
@@ -152,26 +152,26 @@
                                                     <th>   المتبقي من الايام </th>
                                                     <th> المبلغ </th>
                                                     <th> الدفعة </th>
-                                                    
+
                                                     <th>اجراءات</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                                 @foreach ($payments_un_payed as $key => $row)
-                                                <?php $days = dateDiff(today(),$row->p_date)  ; 
+                                                <?php $days = dateDiff(today(),$row->p_date)  ;
                                                         if($days <= 0 )
-                                                            $class = "table-danger" ; 
+                                                            $class = "table-danger" ;
                                                         else if($days <= 7 )
                                                             $class = "table-warning" ;
                                                         else   $class = "" ;
-                                                
+
                                                 ?>
                                                     <tr class="{{ $class }}">
 
                                                         <td>{{ $row->contract->renter->name }}</td>
                                                         <td>
-                                                             
+
                                                             {{ $row->p_date }} م - {{ $row->p_dateh }} هـ</td>
                                                         <td>{{ $days }} </td>
                                                         <td>{{ $row->amount }} </td>
@@ -180,7 +180,7 @@
                                                                 {{ $row->notes }} @else{{ $row->payment_no }}
                                                             @endif
                                                         </td>
-                                                        
+
 
                                                         <td>
 
@@ -203,14 +203,14 @@
                                                                 </ul>
                                                             </div>
 
-                                                            
+
                                                                 <a href="#"
                                                                     onclick="fn_payement({{ $row }})"
                                                                     class="btn btn-sm btn-icon item-edit" alt="الدفع"
                                                                     alt="الدفع">
                                                                     <i class="fas fa-sack-dollar"></i>
                                                                 </a>
-                                                          
+
 
 
 
@@ -229,24 +229,24 @@
                                                       <th>   المتبقي من الايام </th>
                                                     <th> المبلغ </th>
                                                     <th> الدفعة </th>
-                                                   
+
                                                     <th>اجراءات</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
                                     </div>
                                 @else
-                                    لا يوجد    
+                                    لا يوجد
                                 @endif
 
                             </div>
 
-                             
+
 
                         </div>
                     </div>
-   
-       
+
+
             <!-- Modal -->
             <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel"
                 aria-hidden="true">
@@ -395,7 +395,7 @@
 
                                             <div
                                                 class="col-md-5 invoice-title h-100 text-center text-dark fw-bold p-2 mx-2">
-                                                <span class=" p-2">  سند قبض  
+                                                <span class=" p-2">  سند قبض
                                                 </span>
                                             </div>
                                             <div
@@ -503,7 +503,7 @@ function replace_number(inputString) {
                     $('#amount').val(row['amount']);
                     $('#payment_notes').val(row['notes']);
                     $('#payment_id').val(row['id']);
-                  
+
                     //  $('#emp_name').val($("#emp_id option:selected").text());
                     $('#paymentModal').modal('show');
 
@@ -515,31 +515,31 @@ function replace_number(inputString) {
 
                     console.log(row);
 
-                   
-                    var ser = '('+String(row['sereal']).padStart(4, '0')+')'+row['year_m']+'-'+row['year_h'] ; 
+
+                    var ser = '('+String(row['sereal']).padStart(4, '0')+')'+row['year_m']+'-'+row['year_h'] ;
                     $('#p_sereal').html(ser);
-                    
-                    var pdateh = 'التاريخ:'+row['actual_dateh'] +'هـ' ; 
+
+                    var pdateh = 'التاريخ:'+row['actual_dateh'] +'هـ' ;
                     $('#p_actual_dateh').html(pdateh);
-                    
-                    var pdate = 'Date:'+row['actual_date']   ; 
+
+                    var pdate = 'Date:'+row['actual_date']   ;
                     $('#p_actual_date').html(pdate);
-                    
-                    var pamount = '#'+row['amount'] + 'ريال'  ; 
+
+                    var pamount = '#'+row['amount'] + 'ريال'  ;
                     $('#p_amount').html(pamount);
                     $('#p_emp').html(row['employee']['name']);
-                      
-                   
+
+
                     $('#p_amount_txt').html(row['amount_txt']);
                     if(row['payment_no']==0)
                     $('#p_note').html(row['notes']);
                 else
                 $('#p_note').html(':دفعة رقم'+ row['payment_no']+' من الايجار السنوي');
 
-               
-                    
-                    
-                    
+
+
+
+
                     $('#print_paymentModal').modal('show');
 
 
@@ -562,10 +562,10 @@ function replace_number(inputString) {
                 }
             });
         }
-    </script>		
-   
+    </script>
 
 
 
-    <p class="text-unit text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+
+    <p class="text-unit text-primary"><small> </small></p>
 @endsection

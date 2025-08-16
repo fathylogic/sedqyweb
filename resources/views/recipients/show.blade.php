@@ -56,8 +56,8 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <img src="<?= asset('storage/' . $recipient->img) ?>" width="400px"
-                                                            height="400px">
+                                                        <img class="d-block" src="<?= asset('storage/' . $recipient->img) ?>" width="100%"
+                                                           >
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
@@ -92,7 +92,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="form-tabs-units" role="tabpanel">
 
-                                    
+
                         @if (!empty($sarfs))
             <div class="card-datatable table-responsive pt-0">
                 <table class="table table-striped FathyTable">
@@ -151,7 +151,7 @@
 
                                 <td>
 
-                                    <a href="{{ route('sarfs.show',$row->id) }}" 
+                                    <a href="{{ route('sarfs.show',$row->id) }}"
                                         class="btn btn-sm btn-icon item-edit" alt=" عرض التفاصيل" alt=" عرض التفاصيل">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </a>

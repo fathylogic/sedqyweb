@@ -58,8 +58,8 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="<?= asset('storage/' . $center->img) ?>" width="400px"
-                                                    height="400px">
+                                                <img src="<?= asset('storage/' . $center->img) ?>" width="100%"
+                                                   >
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -134,5 +134,5 @@
     </script>
     {!! $data->links('pagination::bootstrap-5') !!}
 
-    <p class="text-center text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+
 @endsection

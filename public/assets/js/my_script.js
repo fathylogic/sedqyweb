@@ -30,18 +30,18 @@ picker.attachTo(document.body);
 		elem.classList.add('w3-hide');
 		break;
 	  }
-	
+
 */
 
 
-	
-	
 
 
 
 
 
-	  
+
+
+
 
 picker.onPicked=function(){
 	let elgd=document.getElementById(gdf);
@@ -150,19 +150,19 @@ function fixWidth(){
 
 
 
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function(event) {
 	/*const elements = document.querySelectorAll('.hijrDate');
 
 		elements.forEach((element) => {
   		element.classList.add('w3-hide');
 
 });*/
-	
+
   });
   function showcon(sh){
 	var ghdate =sh;
 	var hjdate =sh;
-	
+
 	document.getElementById(ghdate).style.display ='block';
 	document.getElementById(hjdate).style.display = 'none';
   }
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var willhidediv =showdiv +'h';
 
 	//alert(willshowdiv);
-	
+
 	document.getElementById(willshowdiv).style.display ='block';
 	document.getElementById(willhidediv).style.display = 'none';
 	document.getElementsByClassName(willhidediv)[0].style.display = 'block';
@@ -198,3 +198,65 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   }
 
+
+
+// مسار الصفحات
+
+   const path = window.location.pathname;
+
+   const translations = {
+    "employees": "الموظفين",
+    "edit": "تعديل",
+    "payrolls": "المرتبات",
+    "centers": "المراكز الرئيسية",
+    "renters": "المستأجرين",
+    "sarfs": "المصروفات",
+    "payments": "الايرادات",
+    "users": " المستخدمين",
+    "recipients": "المستفيدين",
+    "create": "إنشاء",
+    "show": "عرض",
+    "renters": " المستأجرين"
+  };
+
+  if (path !== "/" && path !== "/index" && path !== "/index.php") {
+    const parts = path.split('/').filter(p => p);
+
+    let breadcrumb = '<a href="/"><i class="fa-solid fa-house"></i> الرئيسية</a>';
+    let link = '';
+
+    parts.forEach((part, index) => {
+      link += '/' + part;
+      let label = translations[part] || part; // لو مالهاش ترجمة يسيبها زي ما هي
+      breadcrumb += ' / <a href="' + link + '" >' + label + '</a>';
+    });
+
+    document.getElementById('breadcrumb').innerHTML = breadcrumb;
+  } else {
+    document.getElementById('breadcrumb').style.display = "none";
+  }
+
+
+  // تفعيل فتح الراوبط في القائمة الجانبيه
+
+document.addEventListener("DOMContentLoaded", function() {
+    const currentUrl = window.location.pathname;
+
+    const menuLinks = document.querySelectorAll('.menu-sub .menu-link');
+
+    menuLinks.forEach(link => {
+        if (!link.href || link.getAttribute('href') === '#') return;
+
+        const linkPath = new URL(link.href).pathname;
+
+        if (currentUrl.startsWith(linkPath)) {
+            const subItem = link.closest('.menu-item');
+            subItem.classList.add('active');
+
+            const mainItem = subItem.closest('ul.menu-sub')?.closest('.menu-item');
+            if (mainItem) {
+                mainItem.classList.add('active', 'open');
+            }
+        }
+    });
+});

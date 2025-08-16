@@ -77,15 +77,11 @@
                             </div>
 
 
-                            <div class="mb-3">
+                               <div class="pt-4">
+                          <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light"><i class="fa-solid fa-floppy-disk pe-2"></i> حفظ</button>
+                          <a class="btn btn-label-secondary waves-effect" href="{{ route('recipients.index') }}"><i class="fa-solid fa-xmark pe-2"></i> الغاء</a>
 
-
-                                <div class="col-md-4 text-recipient">
-                                    <button type="submit"
-                                        class="btn btn-primary me-sm-3 me-1 waves-effect waves-light"> حفظ &nbsp;
-                                        <i class="fa-solid fa-floppy-disk"></i> </button>
-                                </div>
-                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -93,5 +89,5 @@
         </div>
     </form>
 
-    <p class="text-recipient text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+    <p class="text-recipient text-primary"><small> </small></p>
 @endsection

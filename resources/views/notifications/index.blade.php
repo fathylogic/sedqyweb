@@ -194,13 +194,13 @@
 
                                         {!! $row->message !!}
                                         <hr />
-                                        
+
 
                                         @if (!empty($row['files']))
                                         <p class="email-attachment-title mb-2">المرفقات</p>
                                             @foreach ($row['files'] as $f)
-                                                
-                                            
+
+
                                             <div class="cursor-pointer">
                                                     <i class="ti ti-file"></i>
                                                     <span class="align-middle ms-1">
@@ -425,7 +425,7 @@
         //     const content = document.querySelector('.ql-editor').innerHTML;
 
         //     console.log(content);
-        //     return false ; 
+        //     return false ;
 
 
         //     // Set the value of the hidden input/textarea
@@ -475,5 +475,5 @@
     </script>
     {!! $data->links('pagination::bootstrap-5') !!}
 
-    <p class="text-center text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+
 @endsection

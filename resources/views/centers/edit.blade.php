@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-         
+
         <div class="pull-right">
             <a class="btn btn-primary me-sm-3 me-1" href="{{ route('centers.index') }}"><i class="fa fa-arrow-left"></i>&nbsp;  عودة &nbsp;</a>
         </div>
@@ -46,15 +46,15 @@
 
                             </select>
                           </div>
-                          
-                         
 
-                         
+
+
+
                           <div class="col-md-6">
                             <label class="form-label" for="electric_no">  حساب شركة الكهرباء   <i class="fa fa-asterisk " style="color: red" aria-hidden="true"></i></label>
                             <input type="text" id="electric_no" value="{{ $center->electric_no }}" name="electric_no" required class="form-control"   />
                           </div>
- 
+
                           <div class="col-md-6">
                             <label class="form-label" for="woter_no">  حساب شركة المياة   <i class="fa fa-asterisk " style="color: red" aria-hidden="true"></i></label>
                             <input type="text" id="woter_no" name="woter_no" value="{{ $center->woter_no }}" required class="form-control"   />
@@ -71,24 +71,30 @@
 
                           </label>
             <input type="file" name="file" id="file" class="form-control" >
-           
+
                           </div>
-                      
+
                             <div class="col-md-12">
                             <label class="form-label" for="notes">       ملاحظات      </label>
                             <textarea   id="notes" name="notes" class="form-control"  >{{ $center->notes }}</textarea>
                           </div>
-                          
+
                         </div>
 
-            
-    <div class="mb-3">
-        
-        
-        <div class="col-md-6 text-center">
+
+                        <div class="pt-4">
+                          <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light"><i class="fa-solid fa-floppy-disk pe-2"></i> حفظ</button>
+                          <a class="btn btn-label-secondary waves-effect" href="{{ route('centers.index') }}"><i class="fa-solid fa-xmark pe-2"></i> الغاء</a>
+
+                        </div>
+
+   <!--   <div class="mb-3">
+
+
+      <div class="col-md-6 text-center">
             <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">حفظ  <i class="fa-solid fa-floppy-disk"></i> </button>
         </div>
-    </div>
+    </div>-->
 </div>
 </div>
 </div>
@@ -96,5 +102,5 @@
 </div>
 </form>
 
-<p class="text-center text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+
 @endsection

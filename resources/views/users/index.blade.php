@@ -32,7 +32,7 @@
    </tr>
                   </thead>
                   <tbody>
-    
+
    @foreach ($data as $key => $user)
     <tr>
         <td>{{ ++$i }}</td>
@@ -40,9 +40,9 @@
         <td>{{ $user->email }}</td>
         <td>
           @if ($user->is_admin)
-           
+
                <label class="badge bg-success">مدير</label>
-            
+
           @endif
         </td>
         <td>
@@ -97,14 +97,14 @@
                                     <ul class="dropdown-menu dropdown-menu-end m-0">
                                         <li><a href="{{ route('users.edit', $user->id) }}" class="dropdown-item"><i
                                                     class="fa-solid fa-circle-info"></i> تعديل</a></li>
-                                        
+
                                         <div class="dropdown-divider"></div>
                                         <li><a href="{{ route('users.destroy', $user->id) }}"
                                                 class="dropdown-item text-danger delete-record"><i
                                                     class="fa-solid fa-trash-can"></i> حذف</a></li>
                                     </ul>
                                 </div>
-                               
+
 
                             </td>
 
@@ -130,10 +130,10 @@
     <script>
 
 
-       
+
 
 
     {!! $data->links('pagination::bootstrap-5') !!}
 
-    <p class="text-center text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+
 @endsection

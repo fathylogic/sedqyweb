@@ -38,15 +38,15 @@
                       <div class="col-md-6 p-0 float-start mb-1">
                         <div
                           class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
-                                               عدد الوحدات  
+                                               عدد الوحدات
                         </div>
-                        <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100"> 45    
+                        <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100"> 45
                         </div>
                       </div>
                       <div class="col-md-6 p-0 float-start mb-1">
                         <div
                           class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
-                         حساب المياة 
+                         حساب المياة
                         </div>
                         <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">  {{ $center->woter_no }} </div>
                       </div>
@@ -56,17 +56,17 @@
                       <div class="col-md-6 p-0 float-start mb-1">
                         <div
                           class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
-                                               حساب الكهرباء   
+                                               حساب الكهرباء
                         </div>
-                        <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">  {{ $center->electric_no }}    
+                        <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">  {{ $center->electric_no }}
                         </div>
                       </div>
                       <div class="col-md-6 p-0 float-start mb-1">
                         <div
                           class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
-                                               حساب المصعد   
+                                               حساب المصعد
                         </div>
-                        <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">  {{ $center->left_electric_no }}    
+                        <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">  {{ $center->left_electric_no }}
                         </div>
                       </div>
                       <div class="col-md-6 p-0 float-start mb-1">
@@ -79,17 +79,17 @@
                     </div>
 
 
-                                    
-                                  
-                                   
-                                   
+
+
+
+
 
                                 </div>
-                   
 
-                    
 
-                    
+
+
+
 
 
 
@@ -132,7 +132,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                      
+
                                         <th> نوع الوحدة </th>
                                         <th> الدور </th>
                                         <th> رقم الوحدة </th>
@@ -147,7 +147,7 @@
                                     @foreach ($units as $key => $unit)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                          
+
                                             <td>{{ $unit->unitType->name }}</td>
                                             <td>{{ $unit->floor_no }}</td>
 
@@ -169,8 +169,8 @@
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <img src="<?= asset('storage/' . $unit->img) ?>"
-                                                                    width="400px" height="400px">
+                                                                <img class="d-block" src="<?= asset('storage/' . $unit->img) ?>"
+                                                                    width="100%" >
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
@@ -183,7 +183,7 @@
 
                                             </td>
 
-                                            
+
                                             <td>
 
                                 <div class="d-inline-block">
@@ -208,16 +208,16 @@
 
 
                             </td>
-                                            
+
                                         </tr>
-                                
+
                                  <?php $i++ ; ?>
                         @endforeach
                         </tbody>
                         <tfoot>
                                     <tr>
                                         <th>#</th>
-                                      
+
                                         <th> نوع الوحدة </th>
                                         <th> الدور </th>
                                         <th> رقم الوحدة </th>
@@ -233,7 +233,7 @@
 
                     </div>
                     <div class="tab-pane fade" id="form-tabs-sarf" role="tabpanel">
-                       
+
                         @if (!empty($sarfs))
             <div class="card-datatable table-responsive pt-0">
                 <table class="table table-striped FathyTable">
@@ -292,7 +292,7 @@
 
                                 <td>
 
-                                    <a href="{{ route('sarfs.show',$row->id) }}" 
+                                    <a href="{{ route('sarfs.show',$row->id) }}"
                                         class="btn btn-sm btn-icon item-edit" alt=" عرض التفاصيل" alt=" عرض التفاصيل">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </a>
@@ -363,7 +363,7 @@
 
                                                         <td>
 
-                                                            <a href="{{ route('payments.show',$row->id) }}" 
+                                                            <a href="{{ route('payments.show',$row->id) }}"
                                         class="btn btn-sm btn-icon item-edit" alt=" عرض التفاصيل" alt=" عرض التفاصيل">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </a>
@@ -403,5 +403,5 @@
 
 
 
-   
+
 @endsection

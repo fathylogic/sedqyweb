@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-         
+
         <div class="pull-right">
             <a class="btn btn-primary me-sm-3 me-1" href="{{ route('renters.index') }}"><i class="fa fa-arrow-left"></i>&nbsp;  عودة &nbsp;</a>
         </div>
@@ -39,7 +39,7 @@
                             <label class="form-label" for="id_no">    رقم الهوية     <i class="fa fa-asterisk " style="color: red" aria-hidden="true"></i></label>
                             <input type="text" id="id_no" name="id_no" required class="form-control"   />
                           </div>
- 
+
                           <div class="col-md-6">
                             <label class="form-label" for="nationality">    الجنسية     <i class="fa fa-asterisk " style="color: red" aria-hidden="true"></i></label>
                             <input type="text" id="nationality" name="nationality" required class="form-control"   />
@@ -52,20 +52,20 @@
                              <div class="col-md-6">
                           <label for="file" class="form-label">    صورة الهوية</label>
             <input type="file" name="file" id="file" class="form-control" >
-           
+
                           </div>
-                      
+
                             <div class="col-md-6">
                             <label class="form-label" for="notes">       ملاحظات      </label>
                             <textarea   id="notes" name="notes" class="form-control"  ></textarea>
                           </div>
-                          
+
                         </div>
 
-            
+
     <div class="mb-3">
-        
-        
+
+
         <div class="col-md-6 text-renter">
             <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light"> حفظ &nbsp;  <i class="fa-solid fa-floppy-disk"></i> </button>
         </div>
@@ -77,5 +77,5 @@
 </div>
 </form>
 
-<p class="text-renter text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+<p class="text-renter text-primary"><small> </small></p>
 @endsection

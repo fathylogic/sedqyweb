@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="form-check form-check-inline col-md-6 ohdafrom" style="display: none">
 
-                                            <select id="from_ohda_id" name="from_ohda_id" 
+                                            <select id="from_ohda_id" name="from_ohda_id"
                                                 class="select2 form-select w-100 ohdafrom" data-allow-clear="true">
                                                 <option value="">اختر </option>
                                                 @foreach ($ohdas as $row)
@@ -194,9 +194,9 @@
                                          <div class="col-md-8" id="uint_div" style="display: none">
                                             <label class="form-label" for="unit_id">    الوحدة الربحية   </label>
 
-                                            <select id="unit_id"   name="unit_id"  
+                                            <select id="unit_id"   name="unit_id"
                                                 class="select2 form-select" data-allow-clear="true">
-                                               
+
 
                                             </select>
 
@@ -256,14 +256,14 @@
                                             <input type="text" id="s_desc" name="s_desc" value="" required
                                                 class="form-control">
 
-                                        </div> 
+                                        </div>
                                         <div class="col-md-12">
                                             <label class="form-label" for="receved_by"> المستلم </label>
                                             <input type="text" id="receved_by" name="receved_by" value="" required
                                                 class="form-control">
 
                                         </div>
-                                         
+
 
 
 
@@ -294,9 +294,9 @@
     </form>
 
     <input type="hidden" id="aurl" value="{{ $root }}/sarfs/get_units/"
- 
 
-    <p class="text-unit text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+
+    <p class="text-unit text-primary"><small> </small></p>
 
 
     <script>
@@ -311,29 +311,29 @@
         function fn_get_units(id)
         {
             if(id!=''&&id>0)
-            { 
+            {
             var url = $('#aurl').val()+id;
-            
-            
+
+
             $.ajax({
-                    url: url,  
+                    url: url,
                     method: 'GET',
                     data:id,
-                    dataType: 'text',  
+                    dataType: 'text',
                     success: function(data) {
                         console.log(data) ;
                          $('#unit_id').html(data);
 
-                         $('#unit_id').trigger('change') ; 
+                         $('#unit_id').trigger('change') ;
                         $('#uint_div').show() ;
-                         
-                         
+
+
                     },
                     error: function(xhr, status, error) {
                         // Handle errors
                         console.error("AJAX error:", status, error);
                     }
-                }); 
+                });
             }else
              $('#uint_div').hide() ;
 

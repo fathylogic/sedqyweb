@@ -3,16 +3,6 @@
 /*
 * Pages Mixins
 */
-
-
-
-body{
-      font-family: "Cairo", sans-serif !important;
-}
-.home-page-linke svg{
-  fill: #b0b242 !important;
-  stroke: #b0b242 !important;
-}
 .layout-navbar-fixed .layout-wrapper:not(.layout-horizontal) .layout-page:before {
   content: "";
   width: 100%;
@@ -413,7 +403,7 @@ button.list-group-item-primary.active {
 
 .card-datatable button.btn.btn-secondary.buttons-print.waves-effect.waves-light,
 .card-datatable .btn-secondary {
-  margin: 0px 3px;
+  margin: 0px 3px !important;
 }
 
 div.dt-button-collection .dt-button-active:after {
@@ -1944,4 +1934,25 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item:not(.acti
 .layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .content-footer .footer-container,
 .layout-footer-fixed .layout-wrapper.layout-horizontal .content-footer {
   box-shadow: 0 0.25rem 1rem rgba(165, 163, 174, 0.45);
+}
+
+
+
+.pull-right{
+  background-color: #ffffff;
+    padding: 4px 3px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    border: 1px solid #ccccccab;
+}
+
+#breadcrumb{
+    padding: 10px;
+    background: #489164;
+    color: #fff;
+    border-radius: 7px;
+}
+#breadcrumb a{
+    color: #fff !important;
+    text-decoration:none;
 }

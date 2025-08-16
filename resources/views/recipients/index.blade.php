@@ -7,9 +7,9 @@
                 <h2>إدارة المستفيدين</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary me-sm-3 me-1" href="{{ route('recipients.create') }}"><i
-                        class="fa fa-plus"></i>&nbsp;
-                    اضافة مستفيد جديد</a>
+                <a class="btn btn-primary me-sm-3 me-1" href="{{ route('recipients.create') }}">
+                    <i class="fa-solid fa-user-plus pe-2"></i>
+                    اضافة مستفيد </a>
             </div>
         </div>
     </div>
@@ -59,8 +59,8 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="<?= asset('storage/' . $recipient->img) ?>" width="400px"
-                                                    height="400px">
+                                                <img class="d-block" src="<?= asset('storage/' . $recipient->img) ?>" width="100%"
+                                                    >
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -138,5 +138,5 @@
 
 
 
-    <p class="text-recipient text-primary"><small>أوقاف إبراهيم صدقي محمد سعيد أفندي</small></p>
+    <p class="text-recipient text-primary"><small> </small></p>
 @endsection

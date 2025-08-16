@@ -57,6 +57,10 @@
     <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/quill/katex.css" />
     <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/quill/editor.css" />
 
+      <!-- DataTable CSS -->
+  <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/dataTables/buttons.bootstrap5.css" />
+  <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/dataTables/dataTables.bootstrap5.css" />
+
     <!-- Row Group CSS -->
     <link rel="stylesheet"
         href="{{ $root }}/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css" />
@@ -121,7 +125,8 @@
                                     <script>
                                         document.write(new Date().getFullYear());
                                     </script>
-                                    صدقي
+أوقاف إبراهيم صدقي محمد سعيد أفندي
+
                                 </div>
                                 <div>
 
