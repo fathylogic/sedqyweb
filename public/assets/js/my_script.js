@@ -216,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     "recipients": "المستفيدين",
     "create": "إنشاء",
     "show": "عرض",
+    "maincenters": "المراكز الرئيسية",
     "renters": " المستأجرين"
   };
 
