@@ -22,10 +22,10 @@
                 <div class="container-xl">
                   <h3 class="text-center my-4">المراكز الرئيسية </h3>
 
-                  
+
                   <div class="row">
 
-					 
+
 					@if(!empty($centers))
 					<div class="col-lg-10 mx-auto mb-4">
                       <div class="row">
@@ -34,7 +34,7 @@
                           <div class="card border shadow-none">
                              <a class="home-page-linke" href="{{ route('maincenters.show',$center->id) }}" >
                             <div class="card-body text-center">
-                             <svg fill="#b0b242" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                             <svg fill="#b0b242" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	 width="58px" height="58px" viewBox="0 0 54.82 54.821"
 	 xml:space="preserve">
 <g>
@@ -62,8 +62,8 @@
 </svg>
 
                               <h5 class="my-2"> {{ $center->name }}  </h5>
-                             
-                             
+
+
                             </div>
                                </a >
                           </div>
@@ -79,22 +79,22 @@
 
 
 
-                    
 
-                          
 
-                          
 
-                       
+
+
+
+
 
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+
               <!-- /Popular Articles -->
 
-            
+
 
 
 
