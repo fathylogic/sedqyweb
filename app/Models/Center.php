@@ -31,6 +31,10 @@ class Center  extends Model
     public function location()
     {
         return $this->belongsTo(Location::class, 'center_location');
+    } 
+    public function maincenter()
+    {
+        return $this->belongsTo(Maincenter::class, 'maincenter_id');
     }
      public function units() 
     {

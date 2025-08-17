@@ -32,7 +32,7 @@
 						 @foreach ($centers as $key => $center)
 <div class="col-md-4 mb-md-0 mb-4">
                           <div class="card border shadow-none">
-                             <a class="home-page-linke" href="{{ route('centers.show',$center->id) }}" >
+                             <a class="home-page-linke" href="{{ route('maincenters.show',$center->id) }}" >
                             <div class="card-body text-center">
                              <svg fill="#b0b242" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 width="58px" height="58px" viewBox="0 0 54.82 54.821"
@@ -61,8 +61,8 @@
 </g>
 </svg>
 
-                              <h5 class="my-2"> {{ $center->center_name }}  </h5>
-                              <p>{{ $center->location->name }}</p>
+                              <h5 class="my-2"> {{ $center->name }}  </h5>
+                             
                              
                             </div>
                                </a >

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Center;
+use App\Models\Maincenter;
 use App\Models\Location;
 use App\Models\Unit;
 
@@ -39,7 +40,7 @@ class HomeController extends Controller
        // dd($user) ; 
         $sql = "select * from users_permissions p inner join apps a on a.id = p.app_id where p.user_id = ".Auth::user()->id ; 
         $apps = DB::select($sql) ; 
-        $centers = Center::with('location')->latest()->paginate(10);
+        $centers = Maincenter::with('centers')->latest()->paginate(10);
        //  dd($apps) ; 
          return view('home', compact('current_user','centers'));
     }

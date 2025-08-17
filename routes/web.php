@@ -18,6 +18,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SarfController;
 use App\Http\Controllers\OhdaController;
+use App\Http\Controllers\MaincenterController;
 
 Auth::routes();
 
@@ -39,6 +40,14 @@ Route::get('centers/edit/{id}', [CenterController::class, 'edit'])->name('center
 Route::get('centers/destroy/{id}', [CenterController::class, 'destroy'])->name('centers.destroy');
 Route::get('centers/create', [CenterController::class, 'create'])->name('centers.create');
 Route::post('centers/update/{id}', [CenterController::class, 'update'])->name('centers.update');
+
+Route::get('maincenters', [MaincenterController::class, 'index'])->name('maincenters.index');
+Route::post('maincenters/store', [MaincenterController::class, 'store'])->name('maincenters.store');
+Route::get('maincenters/show/{id}', [MaincenterController::class, 'show'])->name('maincenters.show');
+Route::get('maincenters/edit/{id}', [MaincenterController::class, 'edit'])->name('maincenters.edit');
+Route::get('maincenters/destroy/{id}', [MaincenterController::class, 'destroy'])->name('maincenters.destroy');
+Route::get('maincenters/create', [MaincenterController::class, 'create'])->name('maincenters.create');
+Route::post('maincenters/update/{id}', [MaincenterController::class, 'update'])->name('maincenters.update');
 
 Route::get('renters', [RenterController::class, 'index'])->name('renters.index');
 Route::post('renters/store', [RenterController::class, 'store'])->name('renters.store');

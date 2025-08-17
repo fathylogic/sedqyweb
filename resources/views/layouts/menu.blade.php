@@ -21,12 +21,12 @@
           <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon fa-solid fa-city fa-xl"></i>
-              <div data-i18n="ادارة المراكز الربحية">ادارة المراكز الربحية  </div>
+              <div data-i18n="ادارة المراكز الرئيسية">ادارة المراكز الرئيسية  </div>
             </a>
 
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="{{ route('centers.index') }}" class="menu-link">
+                <a href="{{ route('maincenters.index') }}" class="menu-link">
                   <i class="menu-ico fa-solid fa-building"></i>
                   <div data-i18n="المراكز الرئيسية">المراكز الرئيسية</div>
                 </a>
