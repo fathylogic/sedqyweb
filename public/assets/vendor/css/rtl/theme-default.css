@@ -1117,6 +1117,9 @@ a:hover {
 
 a.home-page-linke {
   color: #6f6b7d;
+  background-image: url(/assets/img/backgrounds/pattren.svg);
+  background-position: bottom left;
+  background-repeat: no-repeat;
 }
 
 a.home-page-linke:hover {

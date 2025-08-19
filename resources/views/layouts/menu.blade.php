@@ -2,9 +2,9 @@
         <div class="app-brand demo">
           <a href="/home" class="app-brand-link">
             <span class="app-brand-logo demo">
-              <img width="20" src="{{$root}}/assets/img/branding/logo.png" />
+              <img width="20" src="{{$root}}/assets/img/branding/logo2.svg" />
             </span>
-            <span class="app-brand-text demo menu-text fw-bold">أوقاف صدقي</span>
+            <span class="app-brand-text demo menu-text fw-bold"> إدارة العقارات</span>
           </a>
 
           <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">

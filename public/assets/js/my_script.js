@@ -205,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
    const path = window.location.pathname;
 
    const translations = {
+    "home": "الرئيسية",
     "employees": "الموظفين",
     "edit": "تعديل",
     "payrolls": "المرتبات",
@@ -220,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     "renters": " المستأجرين"
   };
 
-  if (path !== "/" && path !== "/index" && path !== "/index.php") {
+  if (path !== "/" && path !== "/home" && path !== "/index" && path !== "/index.php") {
     const parts = path.split('/').filter(p => p);
 
     let breadcrumb = '<a href="/"><i class="fa-solid fa-house"></i> الرئيسية</a>';
@@ -236,6 +237,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   } else {
     document.getElementById('breadcrumb').style.display = "none";
   }
+
+
 
 
   // تفعيل فتح الراوبط في القائمة الجانبيه

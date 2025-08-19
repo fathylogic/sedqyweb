@@ -17931,6 +17931,16 @@ button.btn.btn-secondary.create-new.btn-primary {
   display: flex;
   flex: 1 1 auto;
   align-items: stretch;
+
+}
+.layout-page{
+
+
+    background: linear-gradient(180deg,rgba(238, 238, 238, 1) 80%, rgba(238, 238, 238, 0) 90%),url(/assets/img/backgrounds/footer.svg);
+    background-position: bottom left;
+    background-size: auto;
+    background-repeat: repeat-x;
+    background-attachment: fixed;
 }
 
 .layout-menu-offcanvas .layout-wrapper,
@@ -23346,4 +23356,11 @@ a.bg-vimeo:hover, a.bg-vimeo:focus {
 }
 .footer.bg-lighter hr {
   border-color: rgba(93, 89, 108, 0.0760954902);
+}
+
+a.home-page-linke{
+   color:#b0b242
+}
+a.home-page-linke:hover{
+    color:#2b6943 !important;
 }

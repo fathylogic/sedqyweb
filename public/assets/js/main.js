@@ -435,7 +435,7 @@ if (typeof $ !== 'undefined') {
               limit: 5,
               source: filterConfig(searchData.pages),
               templates: {
-                header: '<h6 class="suggestions-header text-primary mb-0 mx-3 mt-3 pb-2">Pages</h6>',
+                header: '<h6 class="suggestions-header text-primary mb-0 mx-3 mt-3 pb-2">الخدمات</h6>',
                 suggestion: function ({ url, icon, name }) {
                   return (
                     '<a href="' +
@@ -454,8 +454,8 @@ if (typeof $ !== 'undefined') {
                 },
                 notFound:
                   '<div class="not-found px-3 py-2">' +
-                  '<h6 class="suggestions-header text-primary mb-2">Pages</h6>' +
-                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i> No Results Found</p>' +
+                  '<h6 class="suggestions-header text-primary mb-2">الخدمات</h6>' +
+                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i> لا يوجد خدمات بهذا الاسم  </p>' +
                   '</div>'
               }
             },
@@ -466,7 +466,7 @@ if (typeof $ !== 'undefined') {
               limit: 4,
               source: filterConfig(searchData.files),
               templates: {
-                header: '<h6 class="suggestions-header text-primary mb-0 mx-3 mt-3 pb-2">Files</h6>',
+                header: '<h6 class="suggestions-header text-primary mb-0 mx-3 mt-3 pb-2">الملفات</h6>',
                 suggestion: function ({ src, name, subtitle, meta }) {
                   return (
                     '<a href="javascript:;">' +
@@ -494,8 +494,8 @@ if (typeof $ !== 'undefined') {
                 },
                 notFound:
                   '<div class="not-found px-3 py-2">' +
-                  '<h6 class="suggestions-header text-primary mb-2">Files</h6>' +
-                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i> No Results Found</p>' +
+                  '<h6 class="suggestions-header text-primary mb-2">الملفات</h6>' +
+                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i> لا يوجد ملفات بهذا الاسم  </p>' +
                   '</div>'
               }
             },
@@ -506,7 +506,7 @@ if (typeof $ !== 'undefined') {
               limit: 4,
               source: filterConfig(searchData.members),
               templates: {
-                header: '<h6 class="suggestions-header text-primary mb-0 mx-3 mt-3 pb-2">Members</h6>',
+                header: '<h6 class="suggestions-header text-primary mb-0 mx-3 mt-3 pb-2">المستخدمين</h6>',
                 suggestion: function ({ name, src, subtitle }) {
                   return (
                     '<a href="app-user-view-account.html">' +
@@ -531,8 +531,8 @@ if (typeof $ !== 'undefined') {
                 },
                 notFound:
                   '<div class="not-found px-3 py-2">' +
-                  '<h6 class="suggestions-header text-primary mb-2">Members</h6>' +
-                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i> No Results Found</p>' +
+                  '<h6 class="suggestions-header text-primary mb-2">المستخدمين</h6>' +
+                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i>   لا يوجد مستخدمين بهذا الاسم</p>' +
                   '</div>'
               }
             }
