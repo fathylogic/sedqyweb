@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>إدارة الوحدات الربحية</h2>
+                <h2>إدارة الوحدات الايجارية</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary me-sm-3 me-1" href="{{ route('units.create') }}"><i class="fa fa-plus"></i>&nbsp;

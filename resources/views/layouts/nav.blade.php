@@ -42,7 +42,7 @@
                           <i class="ti ti-calendar fs-4"></i>
                         </span>
                         <a href="{{ route('payments.index') }}" class="stretched-link">الإيرادات</a>
-                        <small class="text-muted mb-0">ايرادات المراكز الربحية  </small>
+                        <small class="text-muted mb-0">ايرادات المراكز   </small>
                       </div>
                       <div class="dropdown-shortcuts-item col">
                         <span class="dropdown-shortcuts-icon rounded-circle mb-2">

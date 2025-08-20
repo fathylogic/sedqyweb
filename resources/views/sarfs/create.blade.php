@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-
-            <div class="pull-right">
-                <a class="btn btn-primary me-sm-3 me-1" href="{{ route('sarfs.index') }}"><i
-                        class="fa fa-arrow-left"></i>&nbsp; عودة &nbsp;</a>
-            </div>
-        </div>
-    </div>
+    
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -192,7 +184,7 @@
                                         </div>
 
                                          <div class="col-md-8" id="uint_div" style="display: none">
-                                            <label class="form-label" for="unit_id">    الوحدة الربحية   </label>
+                                            <label class="form-label" for="unit_id">    الوحدة الايجارية   </label>
 
                                             <select id="unit_id"   name="unit_id"
                                                 class="select2 form-select" data-allow-clear="true">

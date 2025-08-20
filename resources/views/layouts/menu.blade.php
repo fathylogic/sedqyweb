@@ -34,7 +34,7 @@
               <li class="menu-item">
                 <a href="{{ route('units.index') }}" class="menu-link">
                     <i class="menu-ico fa-solid fa-sack-dollar"></i>
-                  <div data-i18n="الوحدات الربحية">الوحدات الربحية</div>
+                  <div data-i18n="الوحدات الايجارية">الوحدات الايجارية</div>
                 </a>
               </li>
               <li class="menu-item ">

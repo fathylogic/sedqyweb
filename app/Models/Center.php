@@ -24,6 +24,12 @@ class Center  extends Model
         'left_electric_no',
         'created_by',
         'updated_by',
+        'maincenter_id',
+        'gps',
+        'hainame',
+        'street',
+        'Building_no',
+        'sak_no',
         'img',
         'notes'
     ];

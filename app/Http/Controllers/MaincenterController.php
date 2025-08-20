@@ -1,7 +1,7 @@
 <?php
-    
+
 namespace App\Http\Controllers;
-    
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -26,33 +26,33 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
- 
-    
+
+
 class MaincenterController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('auth');
-         
     }
- 
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
-        
+
         $data = Maincenter::with('centers')->latest()->paginate(10);
-       // dd($data[0]->location->name) ; 
-        $current_user = User::find(Auth::user()->id) ; 
-        return view('maincenters.index',compact('data','current_user'))
+        // dd($data[0]->location->name) ; 
+        $current_user = User::find(Auth::user()->id);
+        $locations = Location::get();
+        return view('maincenters.index', compact('data', 'locations', 'current_user'))
             ->with('i', ($request->input('page', 1) - 1) * 10);
     }
-     
-    
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,12 +60,12 @@ class MaincenterController extends Controller
      */
     public function create(): View
     {
-        
-        $current_user = User::find(Auth::user()->id) ; 
-          $emps = Employee::get();
-        return view('maincenters.create',compact( 'emps','current_user'));
+
+        $current_user = User::find(Auth::user()->id);
+        $emps = Employee::get();
+        return view('maincenters.create', compact('emps', 'current_user'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -74,34 +74,57 @@ class MaincenterController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-         
-         $img = ''; 
-        if($request->has('file'))
-        {
-            $uploadedFile = $request->file('file');
-            $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
-            $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
-        }
-         
-        $this->validate($request, [
-            'name' => 'required',
-             'iban'   => ['required', 'regex:/^SA\d{22}$/'],
-        ], [
-            'iban.regex'   => 'IBAN يجب ان يبدأ ب SA  ويتبعه 22 رقم .',
+        $img = '';
+        if ($request->has('btn_add_center')) {
             
-        ]);
-    
-        $input = $request->all();
-        $input['img']= $img ; 
-        $input['created_by']= Auth::user()->id ;  
-      // dd($input) ; 
-        $center =  Maincenter::create($input);
-       
-    
+
+            if ($request->has('file')) {
+                $uploadedFile = $request->file('file');
+                $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
+                $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
+            }
+
+            $this->validate($request, [
+                'center_name' => 'required',
+                'center_location' => 'required',
+                'woter_no' => 'required',
+                'electric_no' => 'required',
+                'maincenter_id'   =>  'required'
+            ]);
+
+            $input = $request->all();
+            $input['img'] = $img;
+            $input['created_by'] = Auth::user()->id;
+             // dd($input) ; 
+            $center =  Center::create($input);
+        } else {
+            if ($request->has('file')) {
+                $uploadedFile = $request->file('file');
+                $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
+                $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
+            }
+
+            $this->validate($request, [
+                'name' => 'required',
+                'iban'   => ['required', 'regex:/^SA\d{22}$/'],
+            ], [
+                'iban.regex'   => 'IBAN يجب ان يبدأ ب SA  ويتبعه 22 رقم .',
+
+            ]);
+
+            $input = $request->all();
+            $input['img'] = $img;
+            $input['created_by'] = Auth::user()->id;
+            // dd($input) ; 
+            $center =  Maincenter::create($input);
+        }
+
+
+
         return redirect()->route('maincenters.index')
-                        ->with('success','     تم الاضافة  بنجاح');
+            ->with('success', '     تم الاضافة  بنجاح');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -110,30 +133,30 @@ class MaincenterController extends Controller
      */
     public function show($id, Request $request)
     {
-        $maincenter = Maincenter::with('centers','employee')->find($id);
-        $current_user = User::find(Auth::user()->id) ; 
+        $maincenter = Maincenter::with('centers', 'employee')->find($id);
+        $current_user = User::find(Auth::user()->id);
 
-        dd($maincenter) ; 
-         $units =   Unit::with('center','unitType','renter')
-         ->where('center_id',$id)
-        ->orderby('id')
-        ->latest()->paginate(10);
+       // dd($maincenter);
+        $centers =   Center::with('units')
+            ->where('maincenter_id', $id)
+            ->orderby('id')
+            ->latest()->paginate(10);
 
 
- $payments = Payment::with(['contract.renter', 'paymentType', 'employee'])
-            ->wherehas('contract', fn($sql) => $sql->where('center_id', $id))
-            ->where('status',1)
-              ->orderByDesc('id')
-            ->get();
+        // $payments = Payment::with(['contract.renter', 'paymentType', 'employee'])
+        //     ->wherehas('contract', fn($sql) => $sql->where('maincenter_id', $id))
+        //     ->where('status', 1)
+        //     ->orderByDesc('id')
+        //     ->get();
 
-          $sarfs = Sarf::with(['sarfType','serviceType', 'payrool.employee', 'recipient', 'paymentType', 'sourceType', 'fromOhda.employee', 'toOhda.employee'])
-            ->where('center_id', $id)
-            ->orderByDesc('id')
-            ->get();
+        // $sarfs = Sarf::with(['sarfType', 'serviceType', 'payrool.employee', 'recipient', 'paymentType', 'sourceType', 'fromOhda.employee', 'toOhda.employee'])
+        //     ->where('center_id', $id)
+        //     ->orderByDesc('id')
+        //     ->get();
 
-        return view('maincenters.show',compact('center','payments','sarfs','current_user','units'));
+        return view('maincenters.show', compact('centers', 'maincenter', 'current_user'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -143,14 +166,12 @@ class MaincenterController extends Controller
     public function edit($id): View
     {
         $center = Center::find($id);
-        $current_user = User::find(Auth::user()->id) ; 
+        $current_user = User::find(Auth::user()->id);
         $locations = Location::get();
-        return view('maincenters.edit',compact( 'center','locations','current_user'));
-        
-        
+        return view('maincenters.edit', compact('center', 'locations', 'current_user'));
     }
-    
-    
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -160,36 +181,35 @@ class MaincenterController extends Controller
      */
     public function update(Request $request, $id): RedirectResponse
     {
-        
+
         $this->validate($request, [
             'center_name' => 'required',
             'center_location' => 'required',
             'woter_no' => 'required',
             'electric_no' => 'required'
-             
+
         ]);
-    
+
         $input = $request->all();
-        if($request->has('file'))
-        {
+        if ($request->has('file')) {
             $uploadedFile = $request->file('file');
             $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
             $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
-            $input['img']= $img ; 
+            $input['img'] = $img;
         }
-       
-        $input['updated_by']= Auth::user()->id ;  
-      // dd($input) ; 
+
+        $input['updated_by'] = Auth::user()->id;
+        // dd($input) ; 
         $center =  Center::find($id);
 
-       
+
         $center->update($input);
-       
-    
+
+
         return redirect()->route('maincenters.index')
-                        ->with('success','تم التعديل بنجاح');
+            ->with('success', 'تم التعديل بنجاح');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -198,10 +218,10 @@ class MaincenterController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-       
-       
+
+
         Center::find($id)->delete();
         return redirect()->route('maincenters.index')
-                        ->with('success','تم الحذف بنجاح');
+            ->with('success', 'تم الحذف بنجاح');
     }
 }

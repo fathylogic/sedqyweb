@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-
-            <div class="pull-right">
-                <a class="btn btn-primary me-sm-3 me-1" href="{{ route('units.index') }}"><i
-                        class="fa fa-arrow-left"></i>&nbsp;  عودة &nbsp;</a>
-            </div>
-        </div>
-    </div>
+    
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">

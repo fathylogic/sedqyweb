@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('payments.index') }}"> <i class="fa fa-arrow-left"></i>&nbsp; عودة
-                    &nbsp;</a>
-            </div>
-        </div>
-    </div>
+    
 
 
     @if (\Session::has('danger'))
@@ -174,7 +166,7 @@
                 function fn_payement(row) {
 
 
-                    console.log(row);
+                   // console.log(row);
 
                     $('#renter_name').val(row['contract']['renter']['name']);
                     $('#amount').val(row['amount']);
