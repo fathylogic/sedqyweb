@@ -237,12 +237,44 @@
         <div class="row">
          <!-- tree Menu -->
          <div class="col-md-4 col-12">
-                  <div class="card mb-4">
-                    <div class="card-body">
+                  <div class="card mb-4 shadow-none">
                      <!-- <div id="jstree-context-menu" class="overflow-auto"></div> -->
-                      <div id="jstree-context-menu" class="overflow-auto jstree jstree-1 jstree-rtl jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false"><ul class="jstree-container-ul jstree-children jstree-contextmenu" role="presentation"><li role="none" id="j1_1" class="jstree-node  jstree-closed"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="#" tabindex="-1" role="treeitem" aria-selected="true" aria-level="1" aria-expanded="false" id="j1_1_anchor"><i class="jstree-icon jstree-themeicon ti ti-folder jstree-themeicon-custom" role="presentation"></i>csssss</a></li><li role="none" id="j1_4" class="jstree-node  jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_4_anchor"><i class="jstree-icon jstree-themeicon ti ti-folder jstree-themeicon-custom" role="presentation"></i>img</a><ul role="group" class="jstree-children"><li role="none" id="j1_5" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_5_anchor"><i class="jstree-icon jstree-themeicon ti ti-photo text-success jstree-themeicon-custom" role="presentation"></i>bg.jpg</a></li><li role="none" id="j1_6" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon ti ti-photo text-success jstree-themeicon-custom" role="presentation"></i>logo.png</a></li><li role="none" id="j1_7" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_7_anchor"><i class="jstree-icon jstree-themeicon ti ti-photo text-success jstree-themeicon-custom" role="presentation"></i>avatar.png</a></li></ul></li><li role="none" id="j1_8" class="jstree-node  jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_8_anchor"><i class="jstree-icon jstree-themeicon ti ti-folder jstree-themeicon-custom" role="presentation"></i>js</a><ul role="group" class="jstree-children"><li role="none" id="j1_9" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_9_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-javascript text-warning jstree-themeicon-custom" role="presentation"></i>jquery.js</a></li><li role="none" id="j1_10" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_10_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-javascript text-warning jstree-themeicon-custom" role="presentation"></i>app.js</a></li></ul></li><li role="none" id="j1_11" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" id="j1_11_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-html5 text-danger jstree-themeicon-custom" role="presentation"></i>index.html</a></li><li role="none" id="j1_12" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" id="j1_12_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-html5 text-danger jstree-themeicon-custom" role="presentation"></i>page-one.html</a></li><li role="none" id="j1_13" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" id="j1_13_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-html5 text-danger jstree-themeicon-custom" role="presentation"></i>page-two.html</a></li></ul></div>
+                                    <!-- JSTree -->
+
+                 <!-- JSTree --><!-- Basic -->
+                    <div class="card-body">
+                      <div id="jstree-basic">
+                        <ul>
+                          <li data-jstree='{"icon" : "fa-solid fa-hotel"}'>
+                            وقف جديد
+                            <ul>
+                              <li data-jstree='{"icon" : "fa-solid fa-file-circle-plus"}'>إضافة مركز فرعي</li>
+                            </ul>
+                          </li>
+                          <li class="jstree-open" data-jstree='{"icon" : "fa-solid fa-hotel"}'>
+                            وصية ابراهيم صدقي
+                            <ul>
+                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>خلف بوارث للملابس الجاهزة</li>
+                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>عبدالله الخياط</li>
+                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>الزهراء</li>
+                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>عمارة الخنساء</li>
+                              <li data-jstree='{"icon" : "fa-solid fa-file-circle-plus"}'>اضافة مركز</li>
+                            </ul>
+                          </li>
+                          <li class="jstree-open" data-jstree='{"icon" : "fa-solid fa-hotel"}'>
+                            وقف ابراهيم صدقي حارة
+                            <ul>
+                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>عمارة الخنساء</li>
+                              <li data-jstree='{"icon" : "fa-solid fa-file-circle-plus"}'>اضافة مركز</li>
+                            </ul>
+                          </li>
+                           <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>خلف بوارث للملابس الجاهزة</li>
+                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>عبدالله الخياط</li>
+                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>الزهراء</li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
+                <!-- /Basic -->
                 </div>
                 <!-- /tree Menu -->
 
@@ -254,6 +286,7 @@
 
 
     </div>
+
 
 
 

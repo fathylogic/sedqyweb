@@ -38,6 +38,7 @@
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ $root }}/assets/css/demo.css" />
 
+
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/node-waves/node-waves.css" />

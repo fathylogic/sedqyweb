@@ -2437,6 +2437,10 @@
   content: "\ea4f";
 }
 
+.ti-building-plus:before {
+  content: "\10060";
+}
+
 .ti-building-arch:before {
   content: "\ea49";
 }
