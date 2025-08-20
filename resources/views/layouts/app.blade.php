@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/quill/typography.css" />
     <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/quill/katex.css" />
     <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/quill/editor.css" />
+    <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/jstree/jstree.css" />
 
       <!-- DataTable CSS -->
   <link rel="stylesheet" href="{{ $root }}/assets/vendor/libs/dataTables/buttons.bootstrap5.css" />
@@ -192,6 +193,7 @@
     <script src="{{ $root }}/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="{{ $root }}/assets/vendor/libs/quill/katex.js"></script>
     <script src="{{ $root }}/assets/vendor/libs/quill/quill.js"></script>
+    <script src="{{ $root }}/assets/vendor/libs/jstree/jstree.js"></script>
 
     <!-- Flat Picker -->
     <script src="{{ $root }}/assets/vendor/libs/moment/moment.js"></script>
@@ -209,6 +211,7 @@
     <script src="{{ $root }}/assets/js/form-layouts.js"></script>
     <script src="{{ $root }}/assets/js/app-email.js"></script>
       <script src="{{ $root }}/assets/js/forms-editors.js"></script>
+      <script src="{{ $root }}/assets/js/extended-ui-treeview.js"></script>
 
     <!-- Time JS -->
     <script src="{{ $root }}/js/time.js"></script>

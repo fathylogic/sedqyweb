@@ -105,7 +105,7 @@
 
 
                         </li>
-                        <br> 
+                        <br>
                     @endforeach
 
                 </ul>
@@ -234,6 +234,23 @@
         </div>
 
 
+        <div class="row">
+         <!-- tree Menu -->
+         <div class="col-md-4 col-12">
+                  <div class="card mb-4">
+                    <div class="card-body">
+                     <!-- <div id="jstree-context-menu" class="overflow-auto"></div> -->
+                      <div id="jstree-context-menu" class="overflow-auto jstree jstree-1 jstree-rtl jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false"><ul class="jstree-container-ul jstree-children jstree-contextmenu" role="presentation"><li role="none" id="j1_1" class="jstree-node  jstree-closed"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="#" tabindex="-1" role="treeitem" aria-selected="true" aria-level="1" aria-expanded="false" id="j1_1_anchor"><i class="jstree-icon jstree-themeicon ti ti-folder jstree-themeicon-custom" role="presentation"></i>csssss</a></li><li role="none" id="j1_4" class="jstree-node  jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_4_anchor"><i class="jstree-icon jstree-themeicon ti ti-folder jstree-themeicon-custom" role="presentation"></i>img</a><ul role="group" class="jstree-children"><li role="none" id="j1_5" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_5_anchor"><i class="jstree-icon jstree-themeicon ti ti-photo text-success jstree-themeicon-custom" role="presentation"></i>bg.jpg</a></li><li role="none" id="j1_6" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon ti ti-photo text-success jstree-themeicon-custom" role="presentation"></i>logo.png</a></li><li role="none" id="j1_7" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_7_anchor"><i class="jstree-icon jstree-themeicon ti ti-photo text-success jstree-themeicon-custom" role="presentation"></i>avatar.png</a></li></ul></li><li role="none" id="j1_8" class="jstree-node  jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_8_anchor"><i class="jstree-icon jstree-themeicon ti ti-folder jstree-themeicon-custom" role="presentation"></i>js</a><ul role="group" class="jstree-children"><li role="none" id="j1_9" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_9_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-javascript text-warning jstree-themeicon-custom" role="presentation"></i>jquery.js</a></li><li role="none" id="j1_10" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="2" id="j1_10_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-javascript text-warning jstree-themeicon-custom" role="presentation"></i>app.js</a></li></ul></li><li role="none" id="j1_11" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" id="j1_11_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-html5 text-danger jstree-themeicon-custom" role="presentation"></i>index.html</a></li><li role="none" id="j1_12" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" id="j1_12_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-html5 text-danger jstree-themeicon-custom" role="presentation"></i>page-one.html</a></li><li role="none" id="j1_13" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" id="j1_13_anchor"><i class="jstree-icon jstree-themeicon ti ti-brand-html5 text-danger jstree-themeicon-custom" role="presentation"></i>page-two.html</a></li></ul></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /tree Menu -->
+
+        </div>
+
+        <div class="col-md-8 col-12">
+            form here
+         </div>
 
 
     </div>
@@ -274,7 +291,7 @@
         function fn_creat_new_center(row) {
             console.log(row);
 
-            // $('#objInfo').html('') ; 
+            // $('#objInfo').html('') ;
             $('#mctitle').html('المركز الرئيسي: ' + row['name']);
             $('#maincenter_id').val(row['id']);
             $('#creat_new_center').show();
@@ -283,7 +300,7 @@
         function fn_hidediv() {
 
 
-            // $('#objInfo').html('') ; 
+            // $('#objInfo').html('') ;
             $('#mctitle').html('');
             $('#maincenter_id').val('');
             $('#creat_new_center').hide();

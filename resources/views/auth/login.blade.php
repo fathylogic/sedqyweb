@@ -69,7 +69,7 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center mb-4 mt-2">
-                <img class="logo_login" src="../assets/img/branding/logo.svg"/>
+                <img class="logo_login" src="../assets/img/branding/logo1.png"/>
               </div>
               <!-- /Logo -->
               <h4 class="mb-1 pt-2"></h4>
