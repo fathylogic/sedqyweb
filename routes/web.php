@@ -19,6 +19,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SarfController;
 use App\Http\Controllers\OhdaController;
 use App\Http\Controllers\MaincenterController;
+use App\Http\Controllers\FilesController;
 
 Auth::routes();
 
@@ -35,6 +36,7 @@ Route::post('dropzone/store', [DropzoneController::class, 'store'])->name('dropz
 
 Route::get('centers', [CenterController::class, 'index'])->name('centers.index');
 Route::post('centers/store', [CenterController::class, 'store'])->name('centers.store');
+
 Route::get('centers/show/{id}', [CenterController::class, 'show'])->name('centers.show');
 Route::get('centers/edit/{id}', [CenterController::class, 'edit'])->name('centers.edit');
 Route::get('centers/destroy/{id}', [CenterController::class, 'destroy'])->name('centers.destroy');
@@ -132,6 +134,9 @@ Route::get('sarfs/edit/{id}', [SarfController::class, 'edit'])->name('sarfs.edit
 Route::get('sarfs/destroy/{id}', [SarfController::class, 'destroy'])->name('sarfs.destroy');
 Route::get('sarfs/create', [SarfController::class, 'create'])->name('sarfs.create');
 Route::post('sarfs/update/{id}', [SarfController::class, 'update'])->name('sarfs.update');
+
+Route::post('allfiles/add_files', [FilesController::class, 'add_files'])->name('allfiles.add_files');
+Route::post('allfiles/delete_file', [FilesController::class, 'delete_file'])->name('allfiles.delete_file');
 
 Route::resource('ohdas', OhdaController::class);
 Route::group(['middleware' => ['auth']], function() {

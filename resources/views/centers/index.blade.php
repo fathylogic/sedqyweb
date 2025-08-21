@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>إدارة المراكز الربحيةالرئيسية</h2>
+                <h2>إدارة المراكز الفرعية</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary me-sm-3 me-1" href="{{ route('centers.create') }}"><i class="fa fa-plus"></i>&nbsp;
-                    اضافة مركز ربحي جديد</a>
+                    اضافة مركز فرعي جديد</a>
             </div>
         </div>
     </div>
