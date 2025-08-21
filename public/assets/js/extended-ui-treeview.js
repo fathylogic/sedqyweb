@@ -4,160 +4,42 @@
 
 'use strict';
 
-$(function () {
-  var theme = $('html').hasClass('light-style') ? 'default' : 'default-dark',
-    basicTree = $('#jstree-basic'),
-    customIconsTree = $('#jstree-custom-icons'),
-    contextMenu = $('#jstree-context-menu'),
-    dragDrop = $('#jstree-drag-drop'),
-    checkboxTree = $('#jstree-checkbox'),
-    ajaxTree = $('#jstree-ajax');
+$(function() {
+    $('#jstree-basic').jstree();
 
-  // Basic
-  // --------------------------------------------------------------------
-  if (basicTree.length) {
-    basicTree.jstree({
-      core: {
-        themes: {
-          name: theme
+    $('#jstree-basic').on("select_node.jstree", function (e, data) {
+        var node = data.node;
+        var $li  = $("#" + node.id);
+        var editUrl  = $li.data("edit-url");
+        var dbId     = $li.data("db-id");
+        var tree = $('#jstree-basic').jstree(true);
+        var parentText = "لا يوجد أب";
+        var parentDbId = "لا يوجد ID أب";
+        var parentDbIdText ="";
+        var numChildrenText = "";
+
+        if(node.parent !== "#") {
+            var parentNode = tree.get_node(node.parent);
+            parentText = parentNode.text;
+            var $parentLi = $("#" + parentNode.id);
+            parentDbId = $parentLi.data("db-id");
+            parentDbIdText = "<p><b>الأب (ID db):</b> " + parentDbId + "</p>";
         }
-      }
+
+        if(node.parent === "#") {
+            numChildrenText = "<p><b>عدد العناصر الفرعية:</b> " + node.children.length + "</p>";
+        }
+
+        $("#details").html(
+          "<h4>التفاصيل </h4>" +
+          "<p><b>ID:</b> " + node.id + "</p>" +
+          "<p><b>ID db:</b> " + dbId + "</p>" +
+          "<p><b>الاسم:</b> " + node.text + "</p>" +
+          "<p><b>الأب (الاسم):</b> " + parentText + "</p>" +
+          parentDbIdText +
+          numChildrenText +
+          "<p><a href='" + editUrl + "' class='btn btn-sm btn-primary'> تعديل</a></p>"
+        );
     });
-  }
-
-
-  // Context Menu
-  // --------------------------------------------------------------------
-  if (contextMenu.length) {
-    contextMenu.jstree({
-      core: {
-        themes: {
-          name: theme
-        },
-        check_callback: true,
-        data: [
-          {
-            text: 'css',
-            children: [
-              {
-                text: 'app.css',
-                type: 'css'
-              },
-              {
-                text: 'style.css',
-                type: 'css'
-              }
-            ]
-          },
-          {
-            text: 'img',
-            state: {
-              opened: true
-            },
-            children: [
-              {
-                text: 'bg.jpg',
-                type: 'img'
-              },
-              {
-                text: 'logo.png',
-                type: 'img'
-              },
-              {
-                text: 'avatar.png',
-                type: 'img'
-              }
-            ]
-          },
-          {
-            text: 'js',
-            state: {
-              opened: true
-            },
-            children: [
-              {
-                text: 'jquery.js',
-                type: 'js'
-              },
-              {
-                text: 'app.js',
-                type: 'js'
-              }
-            ]
-          },
-          {
-            text: 'index.html',
-            type: 'html'
-          },
-          {
-            text: 'page-one.html',
-            type: 'html'
-          },
-          {
-            text: 'page-two.html',
-            type: 'html'
-          }
-        ]
-      },
-      plugins: ['types', 'contextmenu'],
-      types: {
-        default: {
-          icon: 'ti ti-folder'
-        },
-        html: {
-          icon: 'ti ti-brand-html5 text-danger'
-        },
-        css: {
-          icon: 'ti ti-brand-css3 text-info'
-        },
-        img: {
-          icon: 'ti ti-photo text-success'
-        },
-        js: {
-          icon: 'ti ti-brand-javascript text-warning'
-        }
-      }
-    });
-  }
-
-
-
-  // Ajax Example
-  // --------------------------------------------------------------------
-  if (ajaxTree.length) {
-    ajaxTree.jstree({
-      core: {
-        themes: {
-          name: theme
-        },
-        data: {
-          url: assetsPath + 'json/jstree-data.json',
-          dataType: 'json',
-          data: function (node) {
-            return {
-              id: node.id
-            };
-          }
-        }
-      },
-      plugins: ['types', 'state'],
-      types: {
-        default: {
-          icon: 'ti ti-folder'
-        },
-        html: {
-          icon: 'ti ti-brand-html5 text-danger'
-        },
-        css: {
-          icon: 'ti ti-brand-css3 text-info'
-        },
-        img: {
-          icon: 'ti ti-photo text-success'
-        },
-        js: {
-          icon: 'ti ti-brand-javascript text-warning'
-        }
-      }
-    });
-  }
 });
+

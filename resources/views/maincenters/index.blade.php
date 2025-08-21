@@ -234,44 +234,36 @@
         </div>
 
 
+
+
         <div class="row">
          <!-- tree Menu -->
          <div class="col-md-4 col-12">
                   <div class="card mb-4 shadow-none">
                      <!-- <div id="jstree-context-menu" class="overflow-auto"></div> -->
                                     <!-- JSTree -->
-
                  <!-- JSTree --><!-- Basic -->
                     <div class="card-body">
                       <div id="jstree-basic">
+
                         <ul>
-                          <li data-jstree='{"icon" : "fa-solid fa-hotel"}'>
-                            وقف جديد
-                            <ul>
-                              <li data-jstree='{"icon" : "fa-solid fa-file-circle-plus"}'>إضافة مركز فرعي</li>
-                            </ul>
-                          </li>
-                          <li class="jstree-open" data-jstree='{"icon" : "fa-solid fa-hotel"}'>
-                            وصية ابراهيم صدقي
-                            <ul>
-                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>خلف بوارث للملابس الجاهزة</li>
-                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>عبدالله الخياط</li>
-                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>الزهراء</li>
-                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>عمارة الخنساء</li>
-                              <li data-jstree='{"icon" : "fa-solid fa-file-circle-plus"}'>اضافة مركز</li>
-                            </ul>
-                          </li>
-                          <li class="jstree-open" data-jstree='{"icon" : "fa-solid fa-hotel"}'>
-                            وقف ابراهيم صدقي حارة
-                            <ul>
-                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>عمارة الخنساء</li>
-                              <li data-jstree='{"icon" : "fa-solid fa-file-circle-plus"}'>اضافة مركز</li>
-                            </ul>
-                          </li>
-                           <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>خلف بوارث للملابس الجاهزة</li>
-                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>عبدالله الخياط</li>
-                              <li data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>الزهراء</li>
-                        </ul>
+                            @foreach ($data as $key => $main)
+                            <li data-db-id=" {{ $main->id }} " class="jstree-open" data-edit-url="{{ route('maincenters.show', $main->id) }}" data-jstree='{"icon" : "fa-solid fa-hotel"}'>
+                            {{ $main->name }}
+                                <ul>
+                                    @if ($main->centers->count() > 0)
+                                            @foreach ($main->centers as $center)
+                                                <li data-db-id=" {{ $center->id}} " data-edit-url="{{ route('centers.show', $center->id) }}" data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>
+                                                        {{ $center->center_name }}
+                                                </li>
+                                            @endforeach
+                                    @endif
+
+
+                                    </ul>
+                            </li>
+                            @endforeach
+                         </ul>
                       </div>
                     </div>
                 <!-- /Basic -->
@@ -281,7 +273,8 @@
         </div>
 
         <div class="col-md-8 col-12">
-            form here
+            <div id="details">
+            </div>
          </div>
 
 
