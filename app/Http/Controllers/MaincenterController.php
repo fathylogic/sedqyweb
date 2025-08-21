@@ -16,6 +16,7 @@ use App\Models\Contract;
 use App\Models\Payment;
 use App\Models\Sarf;
 use App\Models\Employee;
+use App\Models\All_file;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
@@ -76,7 +77,7 @@ class MaincenterController extends Controller
     {
         $img = '';
         if ($request->has('btn_add_center')) {
-            
+
 
             if ($request->has('file')) {
                 $uploadedFile = $request->file('file');
@@ -95,7 +96,7 @@ class MaincenterController extends Controller
             $input = $request->all();
             $input['img'] = $img;
             $input['created_by'] = Auth::user()->id;
-             // dd($input) ; 
+            // dd($input) ; 
             $center =  Center::create($input);
         } else {
             if ($request->has('file')) {
@@ -135,8 +136,11 @@ class MaincenterController extends Controller
     {
         $maincenter = Maincenter::with('centers', 'employee')->find($id);
         $current_user = User::find(Auth::user()->id);
-
-       // dd($maincenter);
+        $emps = Employee::get();
+        $files = All_file::where('object_name','maincenters')
+                ->where('object_id',$id)
+                ->get() ; 
+        // dd($maincenter);
         $centers =   Center::with('units')
             ->where('maincenter_id', $id)
             ->orderby('id')
@@ -154,7 +158,7 @@ class MaincenterController extends Controller
         //     ->orderByDesc('id')
         //     ->get();
 
-        return view('maincenters.show', compact('centers', 'maincenter', 'current_user'));
+        return view('maincenters.show', compact('centers', 'emps','files', 'maincenter', 'current_user'));
     }
 
     /**
@@ -182,31 +186,34 @@ class MaincenterController extends Controller
     public function update(Request $request, $id): RedirectResponse
     {
 
-        $this->validate($request, [
-            'center_name' => 'required',
-            'center_location' => 'required',
-            'woter_no' => 'required',
-            'electric_no' => 'required'
-
-        ]);
-
-        $input = $request->all();
+        $img = '';
         if ($request->has('file')) {
             $uploadedFile = $request->file('file');
             $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
             $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
-            $input['img'] = $img;
         }
 
+        $this->validate($request, [
+            'name' => 'required',
+            'iban'   => ['required', 'regex:/^SA\d{22}$/'],
+        ], [
+            'iban.regex'   => 'IBAN يجب ان يبدأ ب SA  ويتبعه 22 رقم .',
+
+        ]);
+
+        $input = $request->all();
+        if ($img != '')
+            $input['img'] = $img;
         $input['updated_by'] = Auth::user()->id;
         // dd($input) ; 
-        $center =  Center::find($id);
+        $center =  Maincenter::find($id);
 
 
         $center->update($input);
+        // dd($input) ; 
 
 
-        return redirect()->route('maincenters.index')
+        return redirect()->route('maincenters.show', $id)
             ->with('success', 'تم التعديل بنجاح');
     }
 
