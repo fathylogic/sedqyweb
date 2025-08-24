@@ -252,6 +252,7 @@ transform: rotate(90deg);
                                 data-iban=" {{ $main->iban }} "
                                 data-jstree='{"icon" : "fa-solid fa-hotel"}'
                                 data-main-data="{{ $main }}"
+                                 data-emp_name ="{{ $main->employee->name }}"  {{-- اسم الموظف المسؤول  --}}
                                 onclick="fn_hidediv()">
                                 {{ $main->name }}
                                 <ul>
@@ -259,6 +260,10 @@ transform: rotate(90deg);
                                     @foreach ($main->centers as $center)
                                     <li data-db-id=" {{ $center->id}} "
                                         data-edit-url="{{ route('centers.show', $center->id) }}"
+                                        data-woter_no="{{ $center->woter_no }}"
+                                        data-electric_no="{{$center->electric_no }}"
+                                        data-electric_no="{{$center->electric_no }}"
+                                        data-gps="<a href='{{$center->gps }}' target='_blank'>{{$center->gps}}</a>"
                                         data-jstree='{"icon" : "fa-solid fa-building-circle-exclamation"}'>
                                         {{ $center->center_name }}
                                     </li>

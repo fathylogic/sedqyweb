@@ -45,7 +45,7 @@ class MaincenterController extends Controller
     public function index(Request $request)
     {
 
-        $data = Maincenter::with('centers')->latest()->paginate(10);
+        $data = Maincenter::with('centers', 'employee')->latest()->paginate(10);
         // dd($data[0]->location->name) ; 
         $current_user = User::find(Auth::user()->id);
         $locations = Location::get();
