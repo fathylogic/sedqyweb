@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    
+
 
     @if (\Session::has('danger'))
         <div class="alert alert-danger">
@@ -11,6 +11,22 @@
         </div>
     @endif
 
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> يوجد خطأ في بيانات الادخال.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @session('success')
+        <div class="alert alert-success" role="alert">
+            {{ $value }}
+        </div>
+    @endsession
 
 
     <div class="row">
@@ -38,58 +54,171 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9 float-start">
-                                    <div class="row">
-                                        <div class="col-md-6 p-0 float-start mb-1">
-                                            <div
-                                                class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
-                                                وصف الوحدة
-                                            </div>
-                                            <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">
-                                                {{ $unit->unit_description }}
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 p-0 float-start mb-1">
-                                            <div
-                                                class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
+                                    {{-- ---------------------UPDATE FORM---------------------------- --}}
+                                    <form method="POST" action="{{ route('units.update', $unit->id) }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" id="maincenter_id" name="maincenter_id"
+                                            value="{{ $unit->maincenter_id }}">
+                                        <input type="hidden" id="id" name="id" value="{{ $unit->id }}">
+                                        <input type="hidden" id="center_id" name="center_id"
+                                            value="{{ $unit->center_id }}">
+                                        <div class="container-xxl">
+                                            <div class="authentication-wrapper authentication-basic container-p-y">
+                                                <div class="authentication-inner py-4">
+                                                    <!-- Login -->
+                                                    <div class="card border">
 
-                                                الدور
-                                            </div>
-                                            <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">
-                                                {{ $unit->floor_no }} </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 p-0 float-start mb-1">
-                                            <div
-                                                class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
-                                                رقم الوحدة
-                                            </div>
-                                            <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">
-                                                {{ $unit->unit_no }}
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 p-0 float-start mb-1">
-                                            <div
-                                                class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
+                                                        <div class="card-body">
 
-                                                حساب الكهرباء
-                                            </div>
-                                            <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">
-                                                {{ $unit->electric_no }} </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 p-0 float-start mb-1">
-                                            <div
-                                                class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
-                                                المستأجر الحالي
-                                            </div>
-                                            <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">
-                                                {{ @$unit->renter->name }}
-                                            </div>
-                                        </div>
+                                                            <div class="row g-3">
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="unit_type"> نوع
+                                                                        الوحدة <i class="fa fa-asterisk " style="color: red"
+                                                                            aria-hidden="true"></i></label>
+                                                                    <select id="unit_type" name="unit_type"
+                                                                        class="select2 form-select" data-allow-clear="true">
+                                                                        <option value="">اختر </option>
+                                                                        @foreach ($types as $row)
+                                                                            <option value="{{ $row->id }}"
+                                                                                @if ($unit->unit_type == $row->id) {{ 'selected' }} @endif>
+                                                                                {{ $row->name }}</option>
+                                                                        @endforeach
 
-                                    </div>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="unit_description">وصف
+                                                                        الوحدة <i class="fa fa-asterisk " style="color: red"
+                                                                            aria-hidden="true"></i></label>
+                                                                    <input type="text" id="unit_description"
+                                                                        value="{{ $unit->unit_description }}"
+                                                                        name="unit_description" class="form-control"
+                                                                        required />
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="no_of_rooms"> عدد الغرف
+                                                                    </label>
+                                                                    <input type="text" id="no_of_rooms"
+                                                                        name="no_of_rooms" value="{{ $unit->no_of_rooms }}"
+                                                                        class="form-control" />
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="no_of_wc"> عدد دورات
+                                                                        المياة </label>
+                                                                    <input type="text" id="no_of_wc"
+                                                                        value="{{ $unit->no_of_wc }}" name="no_of_wc"
+                                                                        class="form-control" />
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="activity"> النشاط
+                                                                    </label>
+                                                                    <input type="text" id="activity"
+                                                                        value="{{ $unit->activity }}" name="activity"
+                                                                        class="form-control" />
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="woter_no"> حساب
+                                                                        المياه </label>
+                                                                    <input type="text" id="woter_no"
+                                                                        value="{{ $unit->woter_no }}" name="woter_no"
+                                                                        class="form-control" />
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="electric_no">
+                                                                        حساب الكهرباء <i class="fa fa-asterisk "
+                                                                            style="color: red"
+                                                                            aria-hidden="true"></i></label>
+                                                                    <input type="text" id="electric_no"
+                                                                        name="electric_no" required
+                                                                        value="{{ $unit->electric_no }}"
+                                                                        class="form-control" />
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="floor_no">
+                                                                        الدور<i class="fa fa-asterisk " style="color: red"
+                                                                            aria-hidden="true"></i></label>
+                                                                    <input type="text" id="floor_no" required
+                                                                        value="{{ $unit->floor_no }}" name="floor_no"
+                                                                        class="form-control" />
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="unit_no"> رقم
+                                                                        الوحدة <i class="fa fa-asterisk "
+                                                                            style="color: red"
+                                                                            aria-hidden="true"></i></label>
+                                                                    <input type="text" id="unit_no" required
+                                                                        value="{{ $unit->unit_no }}" name="unit_no"
+                                                                        class="form-control" />
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="current_renter_id">
+                                                                        المستأجر الحالي
+                                                                    </label>
+                                                                    <select id="current_renter_id"
+                                                                        name="current_renter_id"
+                                                                        class="select2 form-select"
+                                                                        data-allow-clear="true">
+                                                                        <option value="">اختر </option>
+                                                                        @foreach ($renters as $row)
+                                                                            <option value="{{ $row->id }}"
+                                                                                @if ($unit->current_renter_id == $row->id) {{ 'selected' }} @endif>
+                                                                                {{ $row->name }}</option>
+                                                                        @endforeach
+
+                                                                    </select>
+                                                                </div>
+
+
+
+
+
+                                                                <div class="col-md-6">
+                                                                    <label for="file" class="form-label"> صورة
+                                                                    </label>
+                                                                    <input type="file" name="file" id="file"
+                                                                        class="form-control">
+
+                                                                </div>
+
+
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="notes">
+                                                                        ملاحظات </label>
+                                                                    <textarea id="notes" name="notes" class="form-control">{{ $unit->notes }}</textarea>
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">الغاء </button>
+                                                                <button type="submit" name="btn_add_center"
+                                                                    class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">
+
+                                                                    <i class="fa-solid fa-floppy-disk pe-2"></i>
+                                                                    حفظ
+                                                                </button>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {{-- ---------------------END UPDATE FORM---------------------------- --}}
 
                                 </div>
                             </div>
@@ -103,8 +232,8 @@
                             <ul class="nav nav-tabs card-header-tabs" role="tablist">
 
                                 <li class="nav-item">
-                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#form-tabs-dof3at"
-                                        role="tab" aria-selected="false">
+                                    <button class="nav-link active" data-bs-toggle="tab"
+                                        data-bs-target="#form-tabs-dof3at" role="tab" aria-selected="false">
                                         الايرادات (الدفعات)
                                     </button>
                                 </li>
@@ -120,6 +249,13 @@
                                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#form-tabs-sarf"
                                         role="tab" aria-selected="false">
                                         المصروفات
+                                    </button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#form-tabs-files"
+                                        role="tab" aria-selected="false">
+                                        المرفقات
                                     </button>
                                 </li>
 
@@ -226,7 +362,7 @@
                                         </table>
                                     </div>
                                 @else
-                                    لا يوجد  دفعات مسجلة
+                                    لا يوجد دفعات مسجلة
                                 @endif
 
 
@@ -242,6 +378,7 @@
                                 <div class="collapse" id="collapseContract">
                                     <form method="POST" action="" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="hidden" name="maincenter_id" value="{{ $unit->maincenter_id }}">
                                         <input type="hidden" name="center_id" value="{{ $unit->center_id }}">
                                         <input type="hidden" name="unit_id" value="{{ $unit->id }}">
                                         <div class="card card-body">
@@ -325,14 +462,14 @@
                                                     <label class="form-label" for="insurance_amount">قيمة التأمين <i
                                                             class="fa fa-asterisk " style="color: red"
                                                             aria-hidden="true"></i></label>
-                                                    <input type="number" value="0" id="insurance_amount"
+                                                    <input type="number" id="insurance_amount"
                                                         name="insurance_amount" class="form-control" />
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="form-label" for="services_amount">قيمة التأمين <i
+                                                    <label class="form-label" for="services_amount">قيمة الخدمات <i
                                                             class="fa fa-asterisk " style="color: red"
                                                             aria-hidden="true"></i></label>
-                                                    <input type="number" value="0" id="services_amount"
+                                                    <input type="number"  id="services_amount"
                                                         name="services_amount" class="form-control" />
                                                 </div>
 
@@ -436,93 +573,150 @@
                             </div>
 
                             <div class="tab-pane fade" id="form-tabs-sarf" role="tabpanel">
-                               
+
                                 @if (!empty($sarfs))
-            <div class="card-datatable table-responsive pt-0">
-                <table class="table table-striped FathyTable">
-                    <thead>
-                        <tr>
+                                    <div class="card-datatable table-responsive pt-0">
+                                        <table class="table table-striped FathyTable">
+                                            <thead>
+                                                <tr>
 
-                            <th> من </th>
-                            <th>وجه الصرف </th>
-                            <th> المستلم </th>
-                            <th> المبلغ </th>
-                            <th> الغرض </th>
-                            <th> التاريخ </th>
-                            <th>اجراءات</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                                                    <th> من </th>
+                                                    <th>وجه الصرف </th>
+                                                    <th> المستلم </th>
+                                                    <th> المبلغ </th>
+                                                    <th> الغرض </th>
+                                                    <th> التاريخ </th>
+                                                    <th>اجراءات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                        @foreach ($sarfs as $key => $row)
-                            <tr>
+                                                @foreach ($sarfs as $key => $row)
+                                                    <tr>
 
-                                <td>{{ $row->sourceType->name }}
-                                    @if ($row->from_ohda_id != '')
-                                        ({{ $row->fromOhda->employee->name }})
-                                    @endif
+                                                        <td>{{ $row->sourceType->name }}
+                                                            @if ($row->from_ohda_id != '')
+                                                                ({{ $row->fromOhda->employee->name }})
+                                                            @endif
 
-                                </td>
-                                <td>{{ $row->sarfType->name }}
-
-
-                                    @if ($row->to_ohda_id != '')
-                                        ({{ $row->toOhda->employee->name }})
-                                    @elseif ($row->pay_role_id != '')
-                                        ({{ $row->payrool->employee->name }})
-                                    @elseif ($row->recipient_id != '')
-                                        ({{ $row->recipient->name }})
-                                    @elseif ($row->service_type_id != '')
-                                        ({{ $row->serviceType->name }})
-                                    @endif
+                                                        </td>
+                                                        <td>{{ $row->sarfType->name }}
 
 
-                                </td>
-                                <td>{{ $row->receved_by }}</td>
-                                <td>{{ $row->amount }}
-                                    - ({{ $row->paymentType->name }})
+                                                            @if ($row->to_ohda_id != '')
+                                                                ({{ $row->toOhda->employee->name }})
+                                                            @elseif ($row->pay_role_id != '')
+                                                                ({{ $row->payrool->employee->name }})
+                                                            @elseif ($row->recipient_id != '')
+                                                                ({{ $row->recipient->name }})
+                                                            @elseif ($row->service_type_id != '')
+                                                                ({{ $row->serviceType->name }})
+                                                            @endif
 
-                                </td>
-                                <td>
 
-                                    {{ $row->s_desc }}
-                                </td>
-                                <td>
+                                                        </td>
+                                                        <td>{{ $row->receved_by }}</td>
+                                                        <td>{{ $row->amount }}
+                                                            - ({{ $row->paymentType->name }})
 
-                                    {{ $row->p_date }} - {{ $row->p_dateh }}
+                                                        </td>
+                                                        <td>
 
-                                </td>
+                                                            {{ $row->s_desc }}
+                                                        </td>
+                                                        <td>
 
-                                <td>
+                                                            {{ $row->p_date }} - {{ $row->p_dateh }}
 
-                                    <a href="{{ route('sarfs.show',$row->id) }}" 
-                                        class="btn btn-sm btn-icon item-edit" alt=" عرض التفاصيل" alt=" عرض التفاصيل">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                    </a>
+                                                        </td>
 
-                                </td>
+                                                        <td>
 
-                            </tr>
-                        @endforeach
-                    </tbody>
+                                                            <a href="{{ route('sarfs.show', $row->id) }}"
+                                                                class="btn btn-sm btn-icon item-edit" alt=" عرض التفاصيل"
+                                                                alt=" عرض التفاصيل">
+                                                                <i class="fa-solid fa-circle-info"></i>
+                                                            </a>
 
-                    <tfoot>
-                        <tr>
-                            <th> من </th>
-                            <th>وجه الصرف </th>
-                            <th> المستلم </th>
-                            <th> المبلغ </th>
-                            <th> الغرض </th>
-                            <th> التاريخ </th>
-                            <th>اجراءات</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        @else
-            لا يوجد
-        @endif
+                                                        </td>
 
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+
+                                            <tfoot>
+                                                <tr>
+                                                    <th> من </th>
+                                                    <th>وجه الصرف </th>
+                                                    <th> المستلم </th>
+                                                    <th> المبلغ </th>
+                                                    <th> الغرض </th>
+                                                    <th> التاريخ </th>
+                                                    <th>اجراءات</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                @else
+                                    لا يوجد
+                                @endif
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="form-tabs-files" role="tabpanel">
+
+                                <span>
+                                    <a class="btn bt-show" href="#"
+                                        onclick="fn_add_file_row('file_attach'); return false ; ">
+                                        + اضافة مرفق </a>
+                                </span>
+                                <form method="POST" action="{{ route('allfiles.add_files') }}"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="object_id" value="{{ $unit->id }}">
+                                    <input type="hidden" name="object_name" value="units">
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>عنوان الملف </th>
+                                                <th> الملف </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="file_attach">
+                                            @if (!empty($files))
+                                                @foreach ($files as $file)
+                                                    <tr>
+                                                        <td>{{ $file->title }}</td>
+                                                        <td>
+                                                            <i class="ti ti-file"></i>
+                                                            <span class="align-middle ms-1">
+                                                                <a href="<?= asset('storage/' . $file->url) ?>"
+                                                                    target="_blank">
+                                                                    عرض الملف </a></span>
+
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+
+
+                                        </tbody>
+
+
+                                    </table>
+                                    <div class="pt-4 btn-save-files" style="display: none">
+                                        <button type="submit"
+                                            class="btn btn-primary me-sm-3 me-1 waves-effect waves-light"><i
+                                                class="fa-solid fa-floppy-disk pe-2"></i> حفظ
+                                            الملفات </button>
+
+
+                                    </div>
+
+                                </form>
 
                             </div>
 
@@ -543,6 +737,10 @@
                         @csrf
                         <input type="hidden" name="payment_id" id="payment_id">
                         <input type="hidden" name="emp_name" id="emp_name">
+                        <input type="hidden" name="maincenter_id" value="{{ $unit->maincenter_id }}">
+                        <input type="hidden" name="unit_id" value="{{ $unit->id }}">
+                        <input type="hidden" name="center_id" value="{{ $unit->center_id }}">
+
                         <div class="modal-content">
                             <div class="modal-header  bg-primary">
                                 <h5 class="modal-title bg-lighter text-white" id="paymentModalLabel"> بيانات الدفع</h5>
@@ -683,7 +881,7 @@
 
                                             <div
                                                 class="col-md-5 invoice-title h-100 text-center text-dark fw-bold p-2 mx-2">
-                                                <span class=" p-2">  سند قبض  
+                                                <span class=" p-2"> سند قبض
                                                 </span>
                                             </div>
                                             <div
@@ -703,7 +901,8 @@
                                         <div class="row justify-content-between mb-3">
                                             <div class="col-md-12 text-start p-2">
                                                 <span class="invoice-name-title text-dark fw-bold"> استلمت أنا : </span>
-                                                <span id="p_emp" class="invoice-name fw-bold"> م / فتحي محمد سليمان الخشن</span>
+                                                <span id="p_emp" class="invoice-name fw-bold"> م / فتحي محمد سليمان
+                                                    الخشن</span>
                                             </div>
                                         </div>
 
@@ -722,7 +921,7 @@
                                                 <span> وذلك نظير : </span>
                                             </div>
                                             <div class="col-md-10 invoice-name fw-bold h-100 text-start p-2">
-                                                <span id="p_note">    </span>
+                                                <span id="p_note"> </span>
                                             </div>
                                         </div>
 
@@ -791,7 +990,7 @@
                     $('#amount').val(row['amount']);
                     $('#payment_notes').val(row['notes']);
                     $('#payment_id').val(row['id']);
-                  
+
                     //  $('#emp_name').val($("#emp_id option:selected").text());
                     $('#paymentModal').modal('show');
 
@@ -808,30 +1007,30 @@
                     // $('#payment_notes').val(row['notes']);
                     // $('#payment_id').val(row['id']);
                     // //  $('#emp_name').val($("#emp_id option:selected").text());
-                    var ser = '('+String(row['sereal']).padStart(4, '0')+')'+row['year_m']+'-'+row['year_h'] ; 
+                    var ser = '(' + String(row['sereal']).padStart(4, '0') + ')' + row['year_m'] + '-' + row['year_h'];
                     $('#p_sereal').html(ser);
-                    
-                    var pdateh = 'التاريخ:'+row['actual_dateh'] +'هـ' ; 
+
+                    var pdateh = 'التاريخ:' + row['actual_dateh'] + 'هـ';
                     $('#p_actual_dateh').html(pdateh);
-                    
-                    var pdate = 'Date:'+row['actual_date']   ; 
+
+                    var pdate = 'Date:' + row['actual_date'];
                     $('#p_actual_date').html(pdate);
-                    
-                    var pamount = '#'+row['amount'] + 'ريال'  ; 
+
+                    var pamount = '#' + row['amount'] + 'ريال';
                     $('#p_amount').html(pamount);
                     $('#p_emp').html(row['employee']['name']);
-                      
-                   
-                    $('#p_amount_txt').html(row['amount_txt']);
-                    if(row['payment_no']==0)
-                    $('#p_note').html(row['notes']);
-                else
-                $('#p_note').html(':دفعة رقم'+ row['payment_no']+' من الايجار السنوي');
 
-               
-                    
-                    
-                    
+
+                    $('#p_amount_txt').html(row['amount_txt']);
+                    if (row['payment_no'] == 0)
+                        $('#p_note').html(row['notes']);
+                    else
+                        $('#p_note').html(':دفعة رقم' + row['payment_no'] + ' من الايجار السنوي');
+
+
+
+
+
                     $('#print_paymentModal').modal('show');
 
 

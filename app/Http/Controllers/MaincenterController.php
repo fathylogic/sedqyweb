@@ -134,6 +134,35 @@ class MaincenterController extends Controller
      */
     public function show($id, Request $request)
     {
+       
+       
+        $img = '';
+        if ($request->has('btn_add_center')) {
+
+
+            if ($request->has('file')) {
+                $uploadedFile = $request->file('file');
+                $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
+                $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
+            }
+
+            $this->validate($request, [
+                'center_name' => 'required',
+                'center_location' => 'required',
+                'woter_no' => 'required',
+                'electric_no' => 'required',
+                'maincenter_id'   =>  'required'
+            ]);
+
+            $input = $request->all();
+            $input['img'] = $img;
+            $input['created_by'] = Auth::user()->id;
+            // dd($input) ; 
+            $center =  Center::create($input);
+        }
+       
+       
+       
         $maincenter = Maincenter::with('centers', 'employee')->find($id);
         $current_user = User::find(Auth::user()->id);
         $emps = Employee::get();
@@ -158,7 +187,9 @@ class MaincenterController extends Controller
         //     ->orderByDesc('id')
         //     ->get();
 
-        return view('maincenters.show', compact('centers', 'emps','files', 'maincenter', 'current_user'));
+
+         $locations = Location::get();
+        return view('maincenters.show', compact('centers', 'locations', 'emps','files', 'maincenter', 'current_user'));
     }
 
     /**

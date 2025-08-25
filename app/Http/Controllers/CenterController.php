@@ -8,11 +8,13 @@ use App\Models\User;
 use App\Models\Center;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Models\All_file;
 use App\Models\Payment_type;
 
 use App\Models\Unit_type;
 use App\Models\Contract;
 use App\Models\Payment;
+use App\Models\Renter;
 use App\Models\Sarf;
 use Spatie\Permission\Models\Role;
 use DB;
@@ -73,30 +75,31 @@ class CenterController extends Controller
     public function store(Request $request): RedirectResponse
     {
          
-         $img = ''; 
-        if($request->has('file'))
-        {
-            $uploadedFile = $request->file('file');
-            $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
-            $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
-        }
-         
-        $this->validate($request, [
-            'center_name' => 'required',
-            'center_location' => 'required',
-            'woter_no' => 'required',
-            'electric_no' => 'required'
-             
-        ]);
+         $img = '';
+        
+
+
+            if ($request->has('file')) {
+                $uploadedFile = $request->file('file');
+                $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
+                $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
+            }
+
+            $this->validate($request, [
+                'center_name' => 'required',
+                'center_location' => 'required',
+                'woter_no' => 'required',
+                'electric_no' => 'required',
+                'maincenter_id'   =>  'required'
+            ]);
+
+            $input = $request->all();
+            $input['img'] = $img;
+            $input['created_by'] = Auth::user()->id;
+            // dd($input) ; 
+            $center =  Center::create($input);
     
-        $input = $request->all();
-        $input['img']= $img ; 
-        $input['created_by']= Auth::user()->id ;  
-      // dd($input) ; 
-        $center =  Center::create($input);
-       
-    
-        return redirect()->route('centers.index')
+        return redirect()->route('centers.show',$center->maincenter_id)
                         ->with('success','     تم الاضافة  بنجاح');
     }
     
@@ -106,9 +109,9 @@ class CenterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id): View
+    public function show($id, Request $request)
     {
-        $center = Center::find($id);
+        $center = Center::with('maincenter','location')->find($id);
          $current_user = User::find(Auth::user()->id) ; 
 
          $units =   Unit::with('center','unitType','renter')
@@ -128,7 +131,14 @@ class CenterController extends Controller
             ->orderByDesc('id')
             ->get();
 
-        return view('centers.show',compact('center','payments','sarfs','current_user','units'));
+             $files = All_file::where('object_name','centers')
+                ->where('object_id',$id)
+                ->get() ; 
+
+             $locations = Location::get();
+              $types = Unit_type::get();
+        $renters = Renter::get();
+        return view('centers.show',compact('center','files','renters','types','locations','payments','sarfs','current_user','units'));
     }
     
     /**
@@ -183,7 +193,7 @@ class CenterController extends Controller
         $center->update($input);
        
     
-        return redirect()->route('centers.index')
+        return redirect()->route('centers.show',$id)
                         ->with('success','تم التعديل بنجاح');
     }
     
@@ -196,9 +206,9 @@ class CenterController extends Controller
     public function destroy($id): RedirectResponse
     {
        
-       
+       $main_center_id = Center::find($id)->maincenter_id ; 
         Center::find($id)->delete();
-        return redirect()->route('centers.index')
+        return redirect()->route('maincenters.show',$main_center_id)
                         ->with('success','تم الحذف بنجاح');
     }
 }

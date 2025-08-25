@@ -38,6 +38,7 @@ Route::get('centers', [CenterController::class, 'index'])->name('centers.index')
 Route::post('centers/store', [CenterController::class, 'store'])->name('centers.store');
 
 Route::get('centers/show/{id}', [CenterController::class, 'show'])->name('centers.show');
+Route::post('centers/show/{id}', [CenterController::class, 'show']);
 Route::get('centers/edit/{id}', [CenterController::class, 'edit'])->name('centers.edit');
 Route::get('centers/destroy/{id}', [CenterController::class, 'destroy'])->name('centers.destroy');
 Route::get('centers/create', [CenterController::class, 'create'])->name('centers.create');
@@ -46,6 +47,7 @@ Route::post('centers/update/{id}', [CenterController::class, 'update'])->name('c
 Route::get('maincenters', [MaincenterController::class, 'index'])->name('maincenters.index');
 Route::post('maincenters/store', [MaincenterController::class, 'store'])->name('maincenters.store');
 Route::get('maincenters/show/{id}', [MaincenterController::class, 'show'])->name('maincenters.show');
+Route::post('maincenters/show/{id}', [MaincenterController::class, 'show']);
 Route::get('maincenters/edit/{id}', [MaincenterController::class, 'edit'])->name('maincenters.edit');
 Route::get('maincenters/destroy/{id}', [MaincenterController::class, 'destroy'])->name('maincenters.destroy');
 Route::get('maincenters/create', [MaincenterController::class, 'create'])->name('maincenters.create');

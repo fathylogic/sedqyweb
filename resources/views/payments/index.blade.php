@@ -51,6 +51,9 @@
                                             <thead>
                                                 <tr>
 
+                                                    <th> المركز الرئيسي </th>
+                                                    <th> المركز الفرعي </th>
+                                                    <th> رقم الوحدة  </th>
                                                     <th> المستأجر </th>
                                                     <th>   المستلم </th>
                                                     <th> المبلغ </th>
@@ -64,6 +67,9 @@
                                                 @foreach ($payments_payed as $key => $row)
                                                     <tr>
 
+                                                        <td>{{ @$row->maincenter->name }}</td>
+                                                        <td>{{ @$row->center->center_name }}</td>
+                                                        <td>{{ @$row->unit->unit_no }}</td>
                                                         <td>{{ $row->contract->renter->name }}</td>
                                                          <td>{{ $row->employee->name }}</td>
                                                         <td>{{ $row->amount }}
@@ -121,6 +127,9 @@
                                             <tfoot>
                                                 <tr>
 
+                                                    <th> المركز الرئيسي </th>
+                                                    <th> المركز الفرعي </th>
+                                                   <th> رقم الوحدة  </th>
                                                     <th> المستأجر </th>
                                                     <th>   المستلم </th>
                                                     <th> المبلغ </th>

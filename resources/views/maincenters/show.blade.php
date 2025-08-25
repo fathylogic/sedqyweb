@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+
+ @session('success')
+        <div class="alert alert-success" role="alert">
+            {{ $value }}
+        </div>
+    @endsession
+      @if (\Session::has('danger'))
+        <div class="alert alert-danger">
+            <ul>
+                <li>{!! \Session::get('danger') !!}</li>
+            </ul>
+        </div>
+    @endif
     <div class="row">
         <div class="col">
             <div class="card  mb-3">
@@ -117,6 +130,8 @@
 
 
 
+
+
                 </div>
             </div>
 
@@ -153,6 +168,11 @@
 
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="form-tabs-units" role="tabpanel">
+
+                        <a href="#exampleModal" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            اضافة مركز فرعي جديد <i class=" fa-solid fa-plus pe-2 " aria-hidden="true"></i>
+                        </a>
 
                         <div class="card-datatable table-responsive pt-0">
                             <table class="table table-striped FathyTable">
@@ -211,29 +231,17 @@
 
                                             <td>
 
-                                                <div class="d-inline-block">
-                                                    <a href="javascript:;"
-                                                        class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
-                                                        data-bs-toggle="dropdown">
-                                                        <i class="text-primary ti ti-dots-vertical"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end m-0">
-                                                        <li><a href="{{ route('centers.edit', $center->id) }}""
-                                                                class="dropdown-item"><i
-                                                                    class="fa-solid fa-circle-info"></i> تعديل</a></li>
-
-                                                        <div class="dropdown-divider"></div>
-                                                        <li><a href="#"
-                                                                onclick="fn_delete_center({{ $center->id }})"
-                                                                class="dropdown-item text-danger delete-record"><i
-                                                                    class="fa-solid fa-trash-can"></i> حذف</a></li>
-                                                    </ul>
-                                                </div>
+                                              
                                                 <a href="{{ route('centers.show', $center->id) }}"
                                                     class="btn btn-sm btn-icon item-edit">
                                                     <i class="text-primary ti ti-pencil"></i>
+                                                </a>  
+                                                <a href="#" onclick="fn_delete_center({{ $center->id }})"
+                                                    class="btn btn-sm btn-icon text-danger delete-record">
+                                                    <i class="fa-solid fa-trash-can"></i>
                                                 </a>
 
+                                                
 
                                             </td>
                                         </tr>
@@ -323,13 +331,163 @@
         </div>
     </div>
 
-    <script>
-        function fn_add_file_row(div_id) {
-            var new_row =
-                '<tr><td><input type="text"   name="title[]" class="form-control" required /></td><td><input type="file" name="file[]"   class="form-control"></td></tr>';
-            $('#' + div_id).append(new_row);
-            $('.btn-save-files').show();
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div id="creat_new_center">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" id="maincenter_id" name="maincenter_id" value="{{ $maincenter->id }}">
+                        <div class="container-xxl">
+                            <div class="authentication-wrapper authentication-basic container-p-y">
+                                <div class="authentication-inner py-4">
+                                    <!-- Login -->
+                                    <div class="card border">
+                                        <div class="card-header">
+                                            <h5 id="mctitle"></h5>
+                                        </div>
+                                        <div class="card-body">
+
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="center_name">اسم المركز
+                                                        الفرعي <i class="fa fa-asterisk " style="color: red"
+                                                            aria-hidden="true"></i></label>
+                                                    <input type="text" name="center_name" class="form-control"
+                                                        required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="center_location">المنطقة <i
+                                                            class="fa fa-asterisk " style="color: red"
+                                                            aria-hidden="true"></i></label>
+                                                    <select id="center_location" name="center_location" required
+                                                        class="select2 form-select" data-allow-clear="true">
+                                                        <option value="">اختر</option>
+                                                        @foreach ($locations as $row)
+                                                            <option value="{{ $row->id }}">
+                                                                {{ $row->name }}</option>
+                                                        @endforeach
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="hainame">الحي </label>
+                                                    <input type="text" name="hainame" class="form-control" />
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="street">الشارع
+                                                    </label>
+                                                    <input type="text" name="street" class="form-control" />
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="Building_no">رقم
+                                                        العمارة </label>
+                                                    <input type="text" name="Building_no" class="form-control" />
+
+                                                </div>
+
+
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="sak_no"> الموقع على
+                                                        الخريطة </label>
+                                                    <input type="text" name="gps" class="form-control" />
+
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="sak_no">رقم الصك
+                                                    </label>
+                                                    <input type="text" name="sak_no" class="form-control" />
+
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="electric_no"> حساب شركة
+                                                        الكهرباء <i class="fa fa-asterisk " style="color: red"
+                                                            aria-hidden="true"></i></label>
+                                                    <input type="text" id="electric_no" name="electric_no" required
+                                                        class="form-control" />
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="woter_no"> حساب شركة
+                                                        المياة <i class="fa fa-asterisk " style="color: red"
+                                                            aria-hidden="true"></i></label>
+                                                    <input type="text" id="woter_no" name="woter_no" required
+                                                        class="form-control" />
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="left_electric_no"> حساب
+                                                        اخر للمصاعد
+                                                    </label>
+                                                    <input type="text" id="left_electric_no" name="left_electric_no"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="file" class="form-label"> صورة</label>
+                                                    <input type="file" name="file" id="file"
+                                                        class="form-control">
+
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label class="form-label" for="notes"> ملاحظات
+                                                    </label>
+                                                    <textarea id="notes" name="notes" class="form-control"></textarea>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">الغاء </button>
+                                                <button type="submit" name="btn_add_center"
+                                                    class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">
+                                                    
+                                                    <i class="fa-solid fa-floppy-disk pe-2"></i>
+                                                حفظ
+                                                </button>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+       
+
+         function fn_delete_center(id) {
+            Swal.fire({
+                title: "هل انت متأكد من انك تريد الحذف ?",
+                text: "لا يمكنك استرجاعها مرة أخرى!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "إلغاء",
+                confirmButtonText: "نعم,  احذف!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "../../centers/destroy/" + id
+                }
+            });
         }
     </script>
 @endsection

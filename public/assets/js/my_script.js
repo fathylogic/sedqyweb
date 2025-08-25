@@ -11,7 +11,13 @@ picker.attachTo(document.body);
 
 
 
+function fn_add_file_row(div_id) {
+            var new_row =
+                '<tr><td><input type="text"   name="title[]" class="form-control" required /></td><td><input type="file" name="file[]"   class="form-control"></td></tr>';
+            $('#' + div_id).append(new_row);
+            $('.btn-save-files').show();
 
+        }
 
  function cdid(gdid){
 	var gdf =gdid;

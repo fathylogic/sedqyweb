@@ -19,7 +19,7 @@ class Sarf  extends Model
         									
 'source_type_id', 'p_date', 'p_dateh', 'amount', 'amount_txt', 'sarf_type_id'
 , 'pay_role_id', 'payment_type', 'year_m', 'year_h', 'sereal', 'recipient_id'
-, 'from_ohda_id', 'to_ohda_id','s_desc', 'service_type_id', 'center_id', 'unit_id', 'created_at'
+, 'from_ohda_id', 'to_ohda_id','s_desc', 'service_type_id', 'maincenter_id','center_id', 'unit_id', 'created_at'
 , 'updated_at', 'created_by', 'updated_by', 'img','receved_by'
 
 
@@ -60,6 +60,10 @@ public function paymentType()
     public function center()
     {
         return $this->belongsTo(Center::class, 'center_id');
+    }
+    public function maincenter()
+    {
+        return $this->belongsTo(Maincenter::class, 'maincenter_id');
     }
     public function unit()
     {

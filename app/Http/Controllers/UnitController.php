@@ -11,6 +11,7 @@ use App\Models\Employee;
 use App\Models\Payment_type;
 use App\Models\Unit;
 use App\Models\Unit_type;
+use App\Models\All_file;
 use App\Models\Contract;
 use App\Models\Payment;
 use App\Models\Sarf;
@@ -101,6 +102,7 @@ class UnitController extends Controller
             'unit_description' => 'required',
             'unit_type' => 'required',
             'center_id' => 'required',
+            'maincenter_id' => 'required',
             'electric_no' => 'required'
         ]);
 
@@ -111,7 +113,7 @@ class UnitController extends Controller
         $unit =  Unit::create($input);
 
 
-        return redirect()->route('units.index')
+        return redirect()->route('centers.show' ,$unit->center_id )
             ->with('success', '     تم الاضافة  بنجاح');
     }
 
@@ -127,9 +129,9 @@ class UnitController extends Controller
     {
       
         $sql = "SELECT count(*) c FROM `contracts` WHERE 
-                    start_date BETWEEN '" . $start_date . "' and '" . $end_date . "' 
-                   or end_date BETWEEN '" . $start_date . "' and '" . $end_date . "'   and unit_id = ".$unit_id
-                   ;
+         unit_id = ".$unit_id . " and 
+                    (start_date BETWEEN '" . $start_date . "' and '" . $end_date . "' 
+                   or end_date BETWEEN '" . $start_date . "' and '" . $end_date . "' )     "     ;
         $res = DB::select($sql)[0];
         if ($res->c > 0)
             return false;
@@ -191,7 +193,6 @@ class UnitController extends Controller
 
         if ($request->has('btn_add_contract')) {
 
-
             $this->validate($request, [
                 'start_date' => 'required',
                 'end_date' => 'required',
@@ -200,7 +201,9 @@ class UnitController extends Controller
                 'no_of_payments' => 'required',
                 'year_amount' => 'required',
                 'renter_id' => 'required',
-                'unit_id' => 'required'
+                'unit_id' => 'required',
+                'maincenter_id' => 'required',
+                'center_id' => 'required'
             ]);
 
             $input = $request->all();
@@ -234,7 +237,9 @@ class UnitController extends Controller
                     $no_of_section_days = (int) floor($no_of_all_days / $request->no_of_payments);
                     $payment_data['contract_id'] = $contract->id;
                     $payment_data['status'] = 0;
-                    $payment_data['status'] = 0;
+                     $payment_data['maincenter_id'] = $request->maincenter_id;
+                     $payment_data['center_id'] = $request->center_id;
+                     $payment_data['unit_id'] = $request->unit_id;
                     $payment_data['created_by'] = Auth::user()->id;
                     $payment_data['p_date'] = $start_date;
                     $payment_data['p_dateh'] =  Hijri::ShortDate($start_date);
@@ -287,9 +292,14 @@ class UnitController extends Controller
         $emps = Employee::all();
         $payment_types = Payment_type::all();
 
+          $types = Unit_type::get();
+        $renters = Renter::get();
+ $files = All_file::where('object_name','units')
+                ->where('object_id',$id)
+                ->get() ; 
 
         $current_user = User::find(Auth::user()->id);
-        return view('units.show', compact('unit','sarfs', 'emps','payment_types', 'current_user', 'renters', 'contracts', 'payments'));
+        return view('units.show', compact('unit','files','sarfs','types','renters', 'emps','payment_types', 'current_user', 'renters', 'contracts', 'payments'));
     }
 
     /**
@@ -324,6 +334,7 @@ class UnitController extends Controller
             'unit_description' => 'required',
             'unit_type' => 'required',
             'center_id' => 'required',
+            'maincenter_id' => 'required',
             'electric_no' => 'required'
         ]);
 
@@ -336,14 +347,14 @@ class UnitController extends Controller
         }
 
         $input['updated_by'] = Auth::user()->id;
-        // dd($input) ; 
+     
         $unit =  Unit::find($id);
 
 
         $unit->update($input);
 
 
-        return redirect()->route('units.index')
+        return redirect()->route('units.show',$id)
             ->with('success', 'تم التعديل بنجاح');
     }
 

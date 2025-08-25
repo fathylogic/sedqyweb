@@ -10,6 +10,7 @@ use App\Models\Renter;
 use App\Models\Employee;
 use App\Models\Payment_type;
 use App\Models\Unit;
+use App\Models\Maincenter;
 use App\Models\Unit_type;
 use App\Models\Contract;
 use App\Models\Payment;
@@ -104,11 +105,11 @@ class PaymentController extends Controller
 
 
 
-            $payments_payed = Payment::with(['contract.renter','contract.unit','contract.center', 'paymentType', 'employee'])
+            $payments_payed = Payment::with(['contract.renter','contract.unit','unit','center','maincenter','contract.center', 'paymentType', 'employee'])
                     ->where('status',1)
                     ->orderByDesc('id') 
                      ->get();  
-            $payments_un_payed = Payment::with(['contract.renter','contract.unit','contract.center', 'paymentType', 'employee'])
+            $payments_un_payed = Payment::with(['contract.renter','contract.unit','unit','center','maincenter','contract.center', 'paymentType', 'employee'])
                     ->where('status',0)
                     ->orderBy('p_date') 
                      ->get(); 

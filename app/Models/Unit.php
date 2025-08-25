@@ -27,6 +27,10 @@ class Unit  extends Model
         'unit_no',
         'created_by',
         'updated_by',
+        'maincenter_id',
+        'no_of_rooms',
+        'no_of_wc',
+        'activity',
         'img',
         'notes'
     ];
@@ -34,6 +38,10 @@ class Unit  extends Model
     public function center()
     {
         return $this->belongsTo(Center::class, 'center_id');
+    }  
+    public function maincenter()
+    {
+        return $this->belongsTo(Maincenter::class, 'maincenter_id');
     } 
     public function unitType()
     {
