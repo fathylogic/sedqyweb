@@ -35,6 +35,32 @@
                                     <input type="text" id="r_type" name="r_type" required class="form-control" />
                                 </div>
 
+                                 <div class="col-md-4">
+                                    <label class="form-label" for="id_type"> نوع الهوية <i class="fa fa-asterisk "
+                                            style="color: red" aria-hidden="true"></i></label>
+
+                                    <select id="id_type" name="id_type" class="select2 form-select"
+                                        data-allow-clear="true">
+                                        <option value="">اختر </option>
+                                        @foreach ($id_types as $row)
+                                            <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="id_no"> رقم الهوية <i class="fa fa-asterisk "
+                                            style="color: red" aria-hidden="true"></i></label>
+                                    <input type="text" id="id_no" name="id_no" required class="form-control" />
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label" for="nationality"> الجنسية <i class="fa fa-asterisk "
+                                            style="color: red" aria-hidden="true"></i></label>
+                                    <input type="text" id="nationality" name="nationality" required
+                                        class="form-control" />
+                                </div>
+
                                 <div class="col-md-4">
                                     <label class="form-label" for="r_address"> العنوان <i class="fa fa-asterisk "
                                             style="color: red" aria-hidden="true"></i></label>
@@ -46,6 +72,10 @@
                                     <label class="form-label" for="mobile_no"> رقم الموبيل (الواتس) <i
                                             class="fa fa-asterisk " style="color: red" aria-hidden="true"></i></label>
                                     <input type="text" id="mobile_no" required name="mobile_no" class="form-control" />
+                                </div>
+                                 <div class="col-md-4">
+                                    <label class="form-label" for="other_no	"> رقم اخر للتواصل  </label>
+                                    <input type="text" id="other_no" name="other_no" class="form-control" />
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label" for="iban"> الحساب البنكي (IBAN) </label>

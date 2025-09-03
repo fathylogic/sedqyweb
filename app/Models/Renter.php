@@ -22,12 +22,12 @@ class Renter  extends Model
         'created_by',
         'updated_by',
         'img',
-        'Employer',
+        'employer',
         'id_type',
         'other_no',
         'work_no',
         'work_letter',
-        'contract_file',
+      
         'notes'
     ];
 

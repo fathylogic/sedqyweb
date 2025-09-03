@@ -9,6 +9,7 @@ use App\Models\Center;
 use App\Models\Recipient;
 use App\Models\Location;
 use App\Models\Sarf;
+use App\Models\Id_type;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
@@ -56,7 +57,8 @@ class RecipientController extends Controller
         
         $current_user = User::find(Auth::user()->id) ; 
          $centers = Center::get();
-        return view('recipients.create',compact('current_user','centers'));
+            $id_types = Id_type::all();
+        return view('recipients.create',compact('current_user','centers','id_types'));
     }
     
     /**
@@ -121,9 +123,10 @@ class RecipientController extends Controller
     {
         $recipient= Recipient::find($id);
         $current_user = User::find(Auth::user()->id) ; 
+           $id_types = Id_type::all();
        
       
-        return view('recipients.edit',compact( 'recipient','current_user'));
+        return view('recipients.edit',compact( 'recipient', 'id_types','current_user'));
         
         
     }

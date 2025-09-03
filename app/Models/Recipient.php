@@ -22,8 +22,18 @@ class Recipient  extends Model
         'mobile_no',
         'created_by',
         'updated_by',
+        'id_no',
+        'id_type',
+        'nationality',
+        'other_no',
         'img',
         'notes'
     ];
+
+       
+public function idType()
+    {
+        return $this->belongsTo(Id_type::class, 'id_type');
+    }
 
 }

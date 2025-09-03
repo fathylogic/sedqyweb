@@ -9,6 +9,7 @@ use App\Models\Center;
 use App\Models\Renter;
 use App\Models\Location;
 use App\Models\Employee;
+use App\Models\Id_type;
 use App\Models\Payment_type;
 use Spatie\Permission\Models\Role;
 use DB;
@@ -39,6 +40,7 @@ class RenterController extends Controller
     {
         
         $data = Renter::latest()->paginate(10);
+        
      
         $current_user = User::find(Auth::user()->id) ; 
         return view('renters.index',compact('data','current_user'))
@@ -55,8 +57,9 @@ class RenterController extends Controller
     {
         
         $current_user = User::find(Auth::user()->id) ; 
+        $id_types = Id_type::all();
        
-        return view('renters.create',compact('current_user'));
+        return view('renters.create',compact('current_user','id_types'));
     }
     
     /**
@@ -74,6 +77,13 @@ class RenterController extends Controller
             $uploadedFile = $request->file('file');
             $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
             $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
+        }  
+        $work_letter = ''; 
+        if($request->has('work_letter'))
+        {
+            $uploadedFile = $request->file('work_letter');
+            $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
+            $work_letter = $uploadedFile->storeAs('uploads', $storedName, 'public');
         }
          
         $this->validate($request, [
@@ -86,6 +96,7 @@ class RenterController extends Controller
     
         $input = $request->all();
         $input['img']= $img ; 
+        $input['work_letter']= $work_letter ; 
         $input['created_by']= Auth::user()->id ;  
       // dd($input) ; 
         $center =  Renter::create($input);
@@ -115,7 +126,8 @@ class RenterController extends Controller
          $current_user = User::find(Auth::user()->id) ; 
            $emps = Employee::all();
         $payment_types = Payment_type::all();
-        return view('renters.show',compact('renter','contracts','payments','current_user','emps','payment_types'));
+         $id_types = Id_type::all();
+        return view('renters.show',compact('renter','id_types','contracts','payments','current_user','emps','payment_types'));
     }
     
     /**
@@ -128,8 +140,9 @@ class RenterController extends Controller
     {
         $renter = Renter::find($id);
         $current_user = User::find(Auth::user()->id) ; 
+          $id_types = Id_type::all();
       
-        return view('renters.edit',compact( 'renter','current_user'));
+        return view('renters.edit',compact( 'renter','id_types','current_user'));
         
         
     }
@@ -160,6 +173,13 @@ class RenterController extends Controller
             $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
             $img = $uploadedFile->storeAs('uploads', $storedName, 'public');
             $input['img']= $img ; 
+        }
+         if($request->has('work_letter'))
+        {
+            $uploadedFile = $request->file('work_letter');
+            $storedName = Str::uuid()->toString() . '.' . $uploadedFile->getClientOriginalExtension();
+            $work_letter = $uploadedFile->storeAs('uploads', $storedName, 'public');
+              $input['work_letter']= $work_letter ; 
         }
        
         $input['updated_by']= Auth::user()->id ;  

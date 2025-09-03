@@ -298,23 +298,7 @@
 
                                                 <td>
 
-                                                    <div class="d-inline-block">
-                                                        <a href="javascript:;"
-                                                            class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
-                                                            data-bs-toggle="dropdown">
-                                                            <i class="text-primary ti ti-dots-vertical"></i>
-                                                        </a>
-                                                        <ul class="dropdown-menu dropdown-menu-end m-0">
-                                                            <li><a href="{{ route('units.edit', $unit->id) }}""
-                                                                    class="dropdown-item"><i
-                                                                        class="fa-solid fa-circle-info"></i> تعديل</a></li>
-
-                                                            <div class="dropdown-divider"></div>
-                                                            {{-- <li><a href="#" onclick="fn_delete_center({{ $unit->id }})"
-                                                class="dropdown-item text-danger delete-record"><i
-                                                    class="fa-solid fa-trash-can"></i> حذف</a></li> --}}
-                                                        </ul>
-                                                    </div>
+                                                   
                                                     <a href="{{ route('units.show', $unit->id) }}"
                                                         class="btn btn-sm btn-icon item-edit">
                                                         <i class="text-primary ti ti-pencil"></i>
