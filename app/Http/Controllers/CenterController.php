@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Employee;
 use App\Models\Center;
+use App\Models\Ohda;
 use App\Models\Location;
 use App\Models\Unit;
 use App\Models\All_file;
 use App\Models\Payment_type;
+use App\Models\Source_type;
+use App\Models\Sarf_type;
+use App\Models\Service_type;
+use App\Models\Recipient;
+use App\Models\Payroll;
 
 use App\Models\Unit_type;
 use App\Models\Contract;
@@ -17,7 +24,7 @@ use App\Models\Payment;
 use App\Models\Renter;
 use App\Models\Sarf;
 use Spatie\Permission\Models\Role;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
@@ -114,6 +121,32 @@ class CenterController extends Controller
         $center = Center::with('maincenter','location')->find($id);
          $current_user = User::find(Auth::user()->id) ; 
 
+
+        if($request->has('btn_add_ohda'))
+        {
+            $this->validate($request, [
+            'emp_id' => 'required',
+            'purpose' => 'required',
+            'center_id' => 'required',
+            'maincenter_id' => 'required',
+            'raseed' => 'required'
+
+        ]);
+
+        DB::transaction(function () use ($request) {
+            $ohda = Ohda::create([
+                'emp_id'  => $request->emp_id,
+                'purpose' => $request->purpose,
+                'raseed'  => $request->raseed,
+                'maincenter_id'  => $request->maincenter_id,
+                'center_id'  => $request->center_id,
+            ]);
+
+            
+        });
+        }
+
+
          $units =   Unit::with('center','unitType','renter')
          ->where('center_id',$id)
         ->orderby('id')
@@ -137,8 +170,26 @@ class CenterController extends Controller
 
              $locations = Location::get();
               $types = Unit_type::get();
-        $renters = Renter::get();
-        return view('centers.show',compact('center','files','renters','types','locations','payments','sarfs','current_user','units'));
+            $renters = Renter::get();
+
+             $ohdas = Ohda::with(['employee','operatios'])
+            ->where('center_id', $id)
+            ->orderByDesc('id')
+            ->get();
+          //  dd( $ohdas->count()) ;
+
+        $sourceTypes = Source_type::get();
+        $sarfTypes = Sarf_type::get();
+        $payment_types = Payment_type::get();
+        $serviceTypes = Service_type::get();
+        $recipients = Recipient::get();
+       
+        $payrolls = Payroll::with(['employee'])
+            ->where('payment_status', 0)
+            ->get();
+
+           $emps = Employee::get();
+        return view('centers.show',compact('payrolls','recipients','serviceTypes','payment_types','sarfTypes','sourceTypes','center','emps','ohdas','files','renters','types','locations','payments','sarfs','current_user','units'));
     }
     
     /**

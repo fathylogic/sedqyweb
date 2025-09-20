@@ -13,7 +13,7 @@ use App\Models\Vacation;
 use App\Models\Notification;
 use App\Models\Location;
 use Spatie\Permission\Models\Role;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;

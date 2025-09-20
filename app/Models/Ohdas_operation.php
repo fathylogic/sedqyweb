@@ -22,6 +22,7 @@ class Ohdas_operation  extends Model
         'sarf_id',
         'amount',
         'created_at',
+        'last_amount',
         'updated_at' 
     ];
 

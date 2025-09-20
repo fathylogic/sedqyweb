@@ -15,7 +15,7 @@ use App\Models\Contract;
 use App\Models\Payment;
 use App\Models\Location;
 use Spatie\Permission\Models\Role;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
@@ -60,13 +60,7 @@ class SarfController extends Controller
 
     public function get_units($id)
     {
-        /*
-             <option value="">اختر </option>
-                                                @foreach ($centers as $row)
-                                                    <option value="{{ $row->id }}">{{ $row->center_name }}
-                                                    </option>
-                                                @endforeach
-        */
+       
         $units =   Unit::with('center', 'unitType', 'renter')
             ->where('center_id', $id)
             ->orderby('id')
@@ -227,12 +221,14 @@ class SarfController extends Controller
                     }
             if ($sarf->from_ohda_id != '') {
                 $ohda = Ohda::find($sarf->from_ohda_id);
+                $last_amount =  $ohda->raseed ; 
                 $ohda->raseed = $ohda->raseed - $sarf->amount;
                 if ($ohda->save()) {
                     $odata = [
                         'ohda_id' => $sarf->from_ohda_id,
                         'op_type' => '-',
                         'sarf_id' => $sarf->id,
+                        'last_amount' => $last_amount,
                         'amount' => $sarf->amount
                     ];
                     $op =  Ohdas_operation::create($odata);
@@ -241,12 +237,14 @@ class SarfController extends Controller
 
             if ($sarf->to_ohda_id != '') {
                 $ohda = Ohda::find($sarf->to_ohda_id);
+                  $last_amount =  $ohda->raseed ; 
                 $ohda->raseed = $ohda->raseed + $sarf->amount;
                 if ($ohda->save()) {
                     $odata = [
                         'ohda_id' => $sarf->to_ohda_id,
                         'op_type' => '+',
                         'sarf_id' => $sarf->id,
+                         'last_amount' => $last_amount,
                         'amount' => $sarf->amount
                     ];
                     $op =  Ohdas_operation::create($odata);
@@ -266,7 +264,11 @@ class SarfController extends Controller
             }
         }
 
-
+        if($request->has('object_name') && $request->has('object_id') && $request->object_id > 0 && $request->object_name !='' )
+        {
+              return redirect()->route($request->object_name.'.show' ,$request->object_id)
+            ->with('success', '     تم      بنجاح');
+        }
         return redirect()->route('sarfs.index')
             ->with('success', '     تم الاضافة  بنجاح');
     }
@@ -297,7 +299,7 @@ class SarfController extends Controller
         // Request $request
 
       
-        $sarf = Sarf::with(['center','unit','sarfType','serviceType', 'payrool.employee', 'recipient', 'paymentType', 'sourceType', 'fromOhda.employee', 'toOhda.employee'])
+        $sarf = Sarf::with(['maincenter','center','unit','sarfType','serviceType', 'payrool.employee', 'recipient', 'paymentType', 'sourceType', 'fromOhda.employee', 'toOhda.employee'])
             
             ->orderByDesc('id')
             ->find($id);

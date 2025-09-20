@@ -100,6 +100,7 @@
 
                             </div>
                         </div>
+                          @if ($sarf->unit_id != '')
                         <div class="col-md-6 p-0 float-start mb-1">
                             <div
                                 class="col-md-4 border rounded text-center fw-bold bg-lighter float-start p-1 me-1 mb-1 h-100">
@@ -107,10 +108,11 @@
                             </div>
                             <div class="col-md-7 border rounded float-start p-1 me-1 mb-1 h-100">
 
-                                {{ $sarf->unit->unitType->name . ' رقم : ' . $sarf->unit->unit_no . '   (' . $sarf->unit->renter->name . ') ' }}
+                                {{ @$sarf->unit->unitType->name . ' رقم : ' . $sarf->unit->unit_no . '   (' . $sarf->unit->renter->name . ') ' }}
 
                             </div>
                         </div>
+                        @endif
 
                     </div>
                 @endif
@@ -188,8 +190,9 @@
                                         </div>
                                         <div
                                             class="col-md-5 invoice-header border border-1 rounded h-100 text-center p-2 mx-2">
-                                            <span>وصية أوقاف إبراهيم صدقي محمد سعيد
-                                                أفندي</span>
+                                            <span>  
+                                                {{$sarf->maincenter->name}}
+                                                 </span>
                                         </div>
                                         <div
                                             class="col-md-2 invoice-num border border-danger text-danger fw-bold border-1 rounded h-100 text-center p-2">
@@ -226,7 +229,7 @@
                                     <div class="row justify-content-between mb-3">
                                         <div class="col-md-12 text-start p-2">
                                             <span class="invoice-name-title text-dark fw-bold"> استلمت أنا : </span>
-                                            <span id="p_emp" class="invoice-name fw-bold"> {{ @$sarf->employee->name }}
+                                            <span id="p_emp" class="invoice-name fw-bold">  {{ $sarf->receved_by }}
                                             </span>
                                         </div>
                                     </div>

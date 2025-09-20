@@ -29,6 +29,10 @@
                         <th>رقم الهوية </th>
                         <th> الجوال </th>
                         <th> الجنسية </th>
+                        <th> نوع الموظف </th>
+                        <th> حالة الموظف </th>
+                        <th> المركز الرئيسي </th>
+                        <th> المركز الفرعي </th>
                         <th> صورة الهوية </th>
                         <th >اجراءات</th>
                     </tr>
@@ -43,6 +47,10 @@
 
                             <td>{{ $employee->mobile_no }}</td>
                             <td>{{ $employee->nationality }}</td>
+                            <td>{{ $employee->employeeType->name }}</td>
+                            <td>{{ $employee->employeeStatus->name }}</td>
+                            <td>{{ $employee->maincenter->name }}</td>
+                            <td>{{ $employee->center->center_name }}</td>
                             <td>
                                 <a  href="#exampleModal{{ $employee->id }}" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal{{ $employee->id }}">
@@ -99,11 +107,15 @@
                         @endforeach
                 </tbody>
                 <tfoot>
-                    <th>#</th>
+                   <th>#</th>
                         <th> الاسم</th>
                         <th>رقم الهوية </th>
                         <th> الجوال </th>
                         <th> الجنسية </th>
+                        <th> نوع الموظف </th>
+                        <th> حالة الموظف </th>
+                        <th> المركز الرئيسي </th>
+                        <th> المركز الفرعي </th>
                         <th> صورة الهوية </th>
                         <th >اجراءات</th>
                 </tfoot>

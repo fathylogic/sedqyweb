@@ -70,6 +70,7 @@ Route::get('employees/edit/{id}', [EmployeeController::class, 'edit'])->name('em
 Route::get('employees/destroy/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
 Route::get('employees/create', [EmployeeController::class, 'create'])->name('employees.create');
 Route::post('employees/update/{id}', [EmployeeController::class, 'update'])->name('employees.update');
+Route::get('employees/get_centers/{id}', [EmployeeController::class, 'get_centers'])->name('employees.get_centers');
 
 
 Route::get('payrolls', [PayrollController::class, 'index'])->name('payrolls.index');
@@ -127,6 +128,7 @@ Route::get('payments/create', [PaymentController::class, 'create'])->name('payme
 Route::post('payments/update/{id}', [PaymentController::class, 'update'])->name('payments.update');
 
 Route::get('sarfs/get_units/{id}', [SarfController::class, 'get_units'])->name('sarfs.get_units');
+
 Route::get('sarfs', [SarfController::class, 'index'])->name('sarfs.index');
 Route::post('sarfs', [SarfController::class, 'index']);
 Route::post('sarfs/store', [SarfController::class, 'store'])->name('sarfs.store');

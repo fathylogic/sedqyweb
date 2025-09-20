@@ -28,12 +28,41 @@ class Employee  extends Model
         'created_by',
         'updated_by',
         'img',
+        'emp_type',
+        'emp_status',
+        'join_date',
+        'join_dateh',
+        'maincenter_id',
         'notes'
     ];
 
      public function vacations() 
     {
         return $this->hasMany(Vacation::class,'emp_id');
+    }   
+    public function payrolls() 
+    {
+        return $this->hasMany(Payroll::class,'emp_id');
+    }  
+    public function empPeriods() 
+    {
+        return $this->hasMany(Emp_period::class,'emp_id');
+    }
+     public function maincenter()
+    {
+        return $this->belongsTo(Maincenter::class, 'maincenter_id');
+    }  
+    public function center()
+    {
+        return $this->belongsTo(Center::class, 'center_id');
+    } 
+    public function employeeType()
+    {
+        return $this->belongsTo(Emp_type::class, 'emp_type');
+    } 
+    public function employeeStatus()
+    {
+        return $this->belongsTo(Emp_status::class, 'emp_status');
     }
 
 }

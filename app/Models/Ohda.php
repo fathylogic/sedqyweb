@@ -20,6 +20,8 @@ class Ohda  extends Model
         'emp_id',
         'purpose',
         'raseed',
+        'center_id',
+        'maincenter_id',
          
         'created_at',
         'updated_at' 

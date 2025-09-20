@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Center;
-use App\Models\Employee;
+use App\Models\Maincenter;
+use App\Models\Emp_type;
+use App\Models\Emp_status;
+use App\Models\Emp_period;
 use App\Models\Payroll;
+use App\Models\Employee;
+ 
 use App\Models\Sarf;
 use App\Models\Vacation;
 use App\Models\Notification;
 use App\Models\Location;
 use Spatie\Permission\Models\Role;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
@@ -55,7 +60,7 @@ class EmployeeController extends Controller
     public function index(Request $request): View
     {
         
-        $data = Employee::latest()->paginate(10);
+        $data = Employee::with('maincenter','center','employeeType','employeeStatus')->latest()->paginate(10);
      
         $current_user = User::find(Auth::user()->id) ; 
         return view('employees.index',compact('data','current_user'))
@@ -63,6 +68,22 @@ class EmployeeController extends Controller
     }
      
     
+
+ public function get_centers($id)
+    {
+       
+        $centers =   Center::
+            where('maincenter_id', $id)
+            ->orderby('id')
+            ->get();
+
+        $op = '<option value="">اختر </option>';
+        foreach ($centers as $center) {
+            $op .= '<option value="' . $center->id . '"> ' . $center->center_name . '   </option>';
+        }
+        return $op;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -73,7 +94,11 @@ class EmployeeController extends Controller
         
         $current_user = User::find(Auth::user()->id) ; 
          $centers = Center::get();
-        return view('employees.create',compact('current_user','centers'));
+         $maincenters = Maincenter::get();
+         $empTypes = Emp_type::get();
+         $empStatus = Emp_status::get();
+
+        return view('employees.create',compact('current_user','maincenters','centers','empTypes','empStatus'));
     }
     
     /**
@@ -109,6 +134,21 @@ class EmployeeController extends Controller
         $input['created_by']= Auth::user()->id ;  
       // dd($input) ; 
         $employee =  Employee::create($input);
+        
+        if($employee->emp_type != 1 && $request->start_date!='')
+        {
+            $data = [
+                    'start_date'=>$request->start_date
+                    ,'end_date'=>$request->end_date
+                    ,'end_dateh'=>$request->end_dateh
+                    ,'start_dateh'=>$request->start_dateh
+                    ,'notes'=>$request->notes
+                    ,'emp_id'=>$employee->id
+                    ,'created_by'=>Auth::user()->id
+                    
+                    ];
+                    $emp_period = Emp_period::create($data) ; 
+        }
        
     
         return redirect()->route('employees.index')
@@ -147,7 +187,7 @@ class EmployeeController extends Controller
                 if ($vaction =  Vacation::create($input)) {
 
                     // add Notification
-                    $toUsers = User::get()->where('is_admin', 1);
+                    $toUsers = User::where('is_admin', 1)->get();
                     foreach ($toUsers as $user) {
                         $n_date['user_id'] = $user->id;
                         $n_date['message'] = "تم تسجيل أجازة للموظف " .$vaction->employee->name;
