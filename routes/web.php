@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-  
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -27,7 +27,7 @@ Route::get('send-whatsapp', [WhatsappController::class, 'index']);
 Route::post('send-whatsapp', [WhatsappController::class, 'sendWhatsappMessage'])->name('send.whatsapp');
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home'); 
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('dropzone', [DropzoneController::class, 'index']);
@@ -147,4 +147,20 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
+});
+
+Route::get('/test-send-email', function() {
+    $to = request('email');
+    $subject = request('subject');
+    $message = request('message');
+
+    if(! empty($to) && ! empty($subject) && ! empty($message)) {
+        Illuminate\Support\Facades\Mail::raw($message, function (\Illuminate\Mail\Message $msg) use ($to, $subject) {
+            $msg->to($to)->subject($subject);
+        });
+
+        return 'Mail sent successfully';
+    }
+
+    return 'Mail not sent, Please try again later';
 });
