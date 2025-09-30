@@ -11,6 +11,8 @@ use App\Models\Emp_type;
 use App\Models\Emp_status;
 use App\Models\Emp_period;
 use App\Models\Payroll;
+use App\Models\Ohda;
+
 use App\Models\Employee;
 use App\Models\Payment_type;
  use AliAbdalla\Tafqeet\Core\Tafqeet;
@@ -245,6 +247,8 @@ return $month == 2 ? ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 2
 
         $employee = Employee::with('center.ohdas','maincenter','vacations','payrolls.sarf')->find($id);
          $ohdas = $employee->center->ohdas ;  
+         if(!empty( $ohdas))
+             $ohdas = Ohda::all() ; 
         $current_user = User::find(Auth::user()->id) ; 
         return view('employees.show',compact( 'ohdas',  'payment_types','employee','current_user'));
     }
