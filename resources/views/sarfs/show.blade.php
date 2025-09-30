@@ -191,7 +191,7 @@
                                         <div
                                             class="col-md-5 invoice-header border border-1 rounded h-100 text-center p-2 mx-2">
                                             <span>  
-                                                {{$sarf->maincenter->name}}
+                                                {{@$sarf->maincenter->name}}
                                                  </span>
                                         </div>
                                         <div

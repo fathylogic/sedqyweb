@@ -45,5 +45,9 @@ class Center  extends Model
      public function units() 
     {
         return $this->hasMany(Unit::class);
+    }  
+    public function ohdas() 
+    {
+        return $this->hasMany(Ohda::class);
     }
 }

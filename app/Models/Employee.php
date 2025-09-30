@@ -38,15 +38,15 @@ class Employee  extends Model
 
      public function vacations() 
     {
-        return $this->hasMany(Vacation::class,'emp_id');
+        return $this->hasMany(Vacation::class,'emp_id')->orderBy('id', 'desc');
     }   
     public function payrolls() 
     {
-        return $this->hasMany(Payroll::class,'emp_id');
+        return $this->hasMany(Payroll::class,'emp_id')->orderBy('id', 'desc');
     }  
     public function empPeriods() 
     {
-        return $this->hasMany(Emp_period::class,'emp_id');
+        return $this->hasMany(Emp_period::class,'emp_id')->orderBy('id', 'desc');
     }
      public function maincenter()
     {

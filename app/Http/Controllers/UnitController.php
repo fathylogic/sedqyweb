@@ -17,7 +17,7 @@ use App\Models\Payment;
 use App\Models\Sarf;
 use App\Models\Location;
 use Spatie\Permission\Models\Role;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
@@ -61,7 +61,7 @@ class UnitController extends Controller
             ->orderby('center_id')
             ->latest()->paginate(10);
 
-        $current_user = User::find(Auth::user()->id);
+          $current_user = User::find(Auth::user()->id) ; 
         return view('units.index', compact('data', 'current_user'))
             ->with('i', ($request->input('page', 1) - 1) * 10);
     }
@@ -175,7 +175,7 @@ class UnitController extends Controller
                  if($payment->save())
                     {
                           // add Notification
-                    $toUsers = User::get()->where('is_admin', 1);
+                    $toUsers = User::where('is_admin', 1)->get();
                     foreach ($toUsers as $user) {
                         $n_date['user_id'] = $user->id;
                         $n_date['message'] = "تم استلام مبلغ نقدي";
@@ -210,12 +210,18 @@ class UnitController extends Controller
 
             $input['created_by'] = Auth::user()->id;
 
+                    $start_date = $request->start_date;
+                    $end_date = $request->end_date;
 
+                    $date1 = date_create($start_date);
+                    $date2 = date_create($end_date);
+
+                    $no_of_all_days = date_diff($date1, $date2)->format('%a');
             if ($this->check_contract_dates($request->start_date, $request->end_date, $request->unit_id)) {
                 if ($contract =  Contract::create($input)) {
 
                     // add Notification
-                    $toUsers = User::get()->where('is_admin', 1);
+                    $toUsers = User::where('is_admin', 1)->get();
                     foreach ($toUsers as $user) {
                         $n_date['user_id'] = $user->id;
                         $n_date['message'] = "تم تحرير عقد جديد ";
@@ -227,13 +233,7 @@ class UnitController extends Controller
 
                     // SELECT DATEDIFF('2025/08/31', '2024/08/30');
 
-                    $start_date = $request->start_date;
-                    $end_date = $request->end_date;
-
-                    $date1 = date_create($start_date);
-                    $date2 = date_create($end_date);
-
-                    $no_of_all_days = date_diff($date1, $date2)->format('%a');
+                   
                     $no_of_section_days = (int) floor($no_of_all_days / $request->no_of_payments);
                     $payment_data['contract_id'] = $contract->id;
                     $payment_data['status'] = 0;
@@ -271,7 +271,14 @@ class UnitController extends Controller
         }
 
         $unit = Unit::with('center', 'unitType', 'renter', 'contracts')->find($id);
-        $contracts = Contract::with('renter')->get()->where('unit_id', $unit->id);
+        $contracts = Contract::with('renter')->where('unit_id', $unit->id)->orderByDesc('id')->get();
+
+        $sql_current_contract = "SELECT id as currnet_contract_id FROM `contracts` WHERE unit_id = ".$id." and now() BETWEEN start_date and end_date LIMIT 1" ; 
+         $res = DB::select($sql_current_contract);
+         if(!empty($res))
+            $currnet_contract_id = $res[0]->currnet_contract_id ; 
+        else
+            $currnet_contract_id = '' ; 
 
         // $payments = Payment::with(['contract' => function (Builder $query )use($unit->id) {
         // $query->where('unit_id','=', $unit->id);
@@ -299,7 +306,7 @@ class UnitController extends Controller
                 ->get() ; 
 
         $current_user = User::find(Auth::user()->id);
-        return view('units.show', compact('unit','files','sarfs','types','renters', 'emps','payment_types', 'current_user', 'renters', 'contracts', 'payments'));
+        return view('units.show', compact('currnet_contract_id','unit','files','sarfs','types','renters', 'emps','payment_types', 'current_user', 'renters', 'contracts', 'payments'));
     }
 
     /**
