@@ -500,6 +500,7 @@
                                                     <th> المستأجر </th>
                                                     <th> بداية العقد </th>
                                                     <th> نهاية العقد </th>
+                                                    <th>   المدة باليوم </th>
                                                     <th> الايجار </th>
                                                     <th> عدد الدفعات </th>
                                                     <th> التأمين </th>
@@ -510,11 +511,15 @@
                                             <tbody>
 
                                                 @foreach ($contracts as $key => $row)
-                                                    <tr>
+                                                {{------class = " @if($row->id==$currnet_contract_id){{'bg-success bg-gradient  '}}"@endif--------}}
+                                                    <tr  >
 
                                                         <td>{{ $row->renter->name }}</td>
                                                         <td>{{ $row->start_date }} م - {{ $row->start_dateh }} هـ</td>
                                                         <td>{{ $row->end_date }} م - {{ $row->end_dateh }} هـ</td>
+                                                        <td>
+                                                             
+                                                            <?=date_diff(date_create($row->start_date), date_create($row->end_date))->format('%a') + 1 ?></td>
                                                         <td>{{ $row->year_amount }}</td>
                                                         <td>{{ $row->no_of_payments }}</td>
                                                         <td>{{ $row->insurance_amount }}</td>
@@ -554,9 +559,10 @@
                                             <tfoot>
                                                 <tr>
 
-                                                    <th> المستأجر </th>
+                                                   <th> المستأجر </th>
                                                     <th> بداية العقد </th>
                                                     <th> نهاية العقد </th>
+                                                    <th>   المدة باليوم </th>
                                                     <th> الايجار </th>
                                                     <th> عدد الدفعات </th>
                                                     <th> التأمين </th>

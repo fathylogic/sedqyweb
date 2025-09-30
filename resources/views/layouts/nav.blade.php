@@ -74,8 +74,8 @@
                           <i class="ti ti-chart-bar fs-4"></i>
                         </span>
 
-                        <a href="{{ route('payrolls.index') }}" class="stretched-link">ادارة الرواتب</a>
-                        <small class="text-muted mb-0">ادارة رواتب الموظفين     </small>
+                        <a href="{{ route('employees.index') }}" class="stretched-link">الموظفين  </a>
+                        <small class="text-muted mb-0">    الموظفين     </small>
                       </div>
                       <div class="dropdown-shortcuts-item col">
                         <span class="dropdown-shortcuts-icon rounded-circle mb-2">

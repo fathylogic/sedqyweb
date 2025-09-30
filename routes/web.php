@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-
+  
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -27,7 +27,7 @@ Route::get('send-whatsapp', [WhatsappController::class, 'index']);
 Route::post('send-whatsapp', [WhatsappController::class, 'sendWhatsappMessage'])->name('send.whatsapp');
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home'); 
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('dropzone', [DropzoneController::class, 'index']);
@@ -67,6 +67,8 @@ Route::post('employees/store', [EmployeeController::class, 'store'])->name('empl
 Route::get('employees/show/{id}', [EmployeeController::class, 'show'])->name('employees.show');
 Route::post('employees/show/{id}', [EmployeeController::class, 'show']);
 Route::get('employees/edit/{id}', [EmployeeController::class, 'edit'])->name('employees.edit');
+Route::get('employees/addPayroll/{id}', [EmployeeController::class, 'addPayroll'])->name('employees.addPayroll');
+Route::post('employees/addPayroll/{id}', [EmployeeController::class, 'addPayroll']);
 Route::get('employees/destroy/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
 Route::get('employees/create', [EmployeeController::class, 'create'])->name('employees.create');
 Route::post('employees/update/{id}', [EmployeeController::class, 'update'])->name('employees.update');
@@ -147,7 +149,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
+
+    
 });
+
 
 Route::get('/test-send-email', function() {
     $to = request('email');

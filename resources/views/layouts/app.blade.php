@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+
+
+
 <?php $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST']; ?>
 <html lang="ar" class="light-style layout-navbar-fixed layout-menu-fixed" dir="ltr" data-theme="theme-default"
     data-assets-path="{{ $root }}/assets/" data-template="vertical-menu-template">
