@@ -40,13 +40,13 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class UnitController extends Controller
 {
-   
+
    public function __construct()
     {
         $this->middleware('auth');
-         
+
     }
- 
+
     /**
      * Display a listing of the resource.
      *
@@ -109,7 +109,7 @@ class UnitController extends Controller
         $input = $request->all();
         $input['img'] = $img;
         $input['created_by'] = Auth::user()->id;
-        // dd($input) ; 
+        // dd($input) ;
         $unit =  Unit::create($input);
 
 
@@ -127,10 +127,10 @@ class UnitController extends Controller
 
     public function check_contract_dates($start_date, $end_date , $unit_id)
     {
-      
-        $sql = "SELECT count(*) c FROM `contracts` WHERE 
-         unit_id = ".$unit_id . " and 
-                    (start_date BETWEEN '" . $start_date . "' and '" . $end_date . "' 
+
+        $sql = "SELECT count(*) c FROM `contracts` WHERE
+         unit_id = ".$unit_id . " and
+                    (start_date BETWEEN '" . $start_date . "' and '" . $end_date . "'
                    or end_date BETWEEN '" . $start_date . "' and '" . $end_date . "' )     "     ;
         $res = DB::select($sql)[0];
         if ($res->c > 0)
@@ -143,13 +143,13 @@ class UnitController extends Controller
     {
         // Request $request
 
-          
+
         if ($request->has('btn_savePayment')) {
 
-           
+
 
             $payment = Payment::find($request->payment_id) ;
-            if($request->amount>0) 
+            if($request->amount>0)
             {
                 $payment->amount_txt =    Tafqeet::arablic($request->amount);
                 $payment->status =   1;
@@ -157,8 +157,8 @@ class UnitController extends Controller
                 $payment->year_m = substr($request->actual_date,2,2);
 
                 $payment->year_h = substr($request->actual_dateh,2,2);
-                 $sql = "SELECT nvl(max(sereal),0)+1 as sereal from payments where year_m = '".$payment->year_m."'" ; 
-                
+                 $sql = "SELECT nvl(max(sereal),0)+1 as sereal from payments where year_m = '".$payment->year_m."'" ;
+
                 $res = DB::select($sql)[0];
                 $payment->sereal = $res->sereal;
                  $payment->notes =  $request->notes;
@@ -171,7 +171,7 @@ class UnitController extends Controller
 
 
                  $payment->payment_type = $request->payment_type;
-                  
+
                  if($payment->save())
                     {
                           // add Notification
@@ -183,7 +183,7 @@ class UnitController extends Controller
                         $n_date['element_id'] = $payment->id ;
                         Notification::create($n_date);
                     }
-                    } 
+                    }
 
 
 
@@ -261,7 +261,7 @@ class UnitController extends Controller
                     for ($i = 0; $i < $request->no_of_payments; $i++) {
                         $payment_data['payment_no'] = $i + 1;
                         Payment::create($payment_data);
-                        $payment_data['p_date'] = new Carbon($payment_data['p_date'])->addDays($no_of_section_days)->format('Y/m/d');
+                        $payment_data['p_date'] = (new Carbon($payment_data['p_date']))->addDays($no_of_section_days)->format('Y/m/d');
                         $payment_data['p_dateh'] =  Hijri::ShortDate($payment_data['p_date']);
                     }
                 }
@@ -293,7 +293,7 @@ class UnitController extends Controller
             ->orderByDesc('id')
             ->get();
 
-       
+
 
         $renters = Renter::all();
         $emps = Employee::all();
@@ -303,7 +303,7 @@ class UnitController extends Controller
         $renters = Renter::get();
  $files = All_file::where('object_name','units')
                 ->where('object_id',$id)
-                ->get() ; 
+                ->get() ;
 
         $current_user = User::find(Auth::user()->id);
         return view('units.show', compact('currnet_contract_id','unit','files','sarfs','types','renters', 'emps','payment_types', 'current_user', 'renters', 'contracts', 'payments'));
@@ -354,7 +354,7 @@ class UnitController extends Controller
         }
 
         $input['updated_by'] = Auth::user()->id;
-     
+
         $unit =  Unit::find($id);
 
 
