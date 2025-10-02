@@ -99,11 +99,13 @@ class PayrollController extends Controller
             'name' => 'required',
             'id_no' => 'required',
             'nationality' => 'required',
-            'iban' => 'required',
+            'iban' => ['required', 'regex:/^SA\d{22}$/'],
             'job' => 'required',
             'salary' => 'required',
-            'mobile_no' => 'required'
-             
+             'mobile_no' => ['required', 'regex:/^05\d{8}$/'],
+        ], [
+            'iban.regex'   => 'IBAN يجب ان يبدأ ب SA  ويتبعه 22 رقم .',
+            'mobile_no.regex' => 'رقم الجوال يجب ان يكون من عشر أرقام مبتدئا ب  05.',
         ]);
     
         $input = $request->all();

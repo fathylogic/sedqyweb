@@ -540,7 +540,7 @@
                     <div class="modal-footer">
                         <hr>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء</button>
-                        <button type="submit" name="btn_savePayment" class="btn btn-primary">
+                        <button type="submit" name="btn_saveSalary" class="btn btn-primary">
 
                             حفظ البيانات </button>
                     </div>
@@ -559,10 +559,7 @@
             
             $('#amount').val(row['net_salary']);
             $('#amount_txt').val(row['net_salary_txt']);
-         
             $('#pay_role_id').val(row['id']);
-
-           
             $('#paymentModal').modal('show');
 
 
